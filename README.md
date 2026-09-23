@@ -1,7 +1,9 @@
 # minotaurobot
+This is a repository of Group 7 for the Introduction Project course of MSc Smart Systems Engineering at Hanze University of Applied Sciences.
 ## Introduction Project course
 ### General Information
 In this course groups of students are expected to design and implement software and/or hardware to complete a maze using the provided [iRobot Create 3 Educational Robot](https://iroboteducation.github.io/create3_docs/). During the course the students have a maze available that can be reconfigured. At the end of the project the students get to demonstrate their work in a maze novel to the students and the robot. 
+
 Note: students are urged not to cause any permanent damage to the robots. Mistakes happen, especially when learning, but please be careful. Furthermore, **the robots are not allowed to be taken out of the building.**
 ### ROS 2 Workshop
 You will get a ROS 2 workshop at the begin of the project.  ROS stands for *Robot Operating System*, which is used by the Create3 robot. The goal of the workshop is for you to learn the fundamentals of ROS and how to implement Python code to control the robot.
@@ -34,4 +36,10 @@ The assessment of the Introduction Project consists of a few mandatory elements.
 - At the end: reflection on the previously set personal learning goals (individual).
 - All of these elements are possible to be resit (2nd opportunity) once only if they were graded with an insufficient (i.e. fail or <5.5) in the first attempt. In such case, please contact the corresponding teacher.
 
-For the exact dates of the progress presentation and the demonstration, please refer to Schedules/Digirooster (accessible through [Hanze](www.myhanze.nl). For the submission deadlines, please refer to Submission Point in the Brightspace environment.
+For the exact dates of the progress presentation and the demonstration, please refer to Schedules/Digirooster (accessible through [Hanze](www.myhanze.nl)). For the submission deadlines, please refer to Submission Point in the Brightspace environment.
+### Useful links
+- [ROS 2 Crash Course](https://felipenmartins.github.io/ROS2-Crash-Course/)
+- [Robotics, Vision and Control](https://link.springer.com/book/10.1007/978-3-031-06469-2). Fundamental Algorithms in Python (check chapter 5). *(You can download the book PDF if you access it from the Hanze network while logged in to your Hanze account.)*
+- [Elements of Robotics](https://link.springer.com/book/10.1007/978-3-319-62533-1). Open-access book that presents algorithms (at a high-level) and demonstrates topics like localization, mapping, machine learning, swarm robotics.
+- [Jupyter Notebooks for learning Mobile Robot Control](https://github.com/felipenmartins/Mobile-Robot-Control)
+- [Robotics Simulation Labs - Set of tutorials to practice robotics concepts with Webots Open-Source Robot Simulator and Python](https://felipenmartins.github.io/Robotics-Simulation-Labs/)
