@@ -17,6 +17,7 @@ Procedure details:
 3. During the first round, each group has 8 minutes to complete the challenge (random order, one group after the other).
 4. After a group finishes the 1st round, it can immediately start working on their code again, until it is their turn on the 2nd round.
 5. After the last group finishes the 1st round, there is a 10 min break, and the 2nd round starts following the same order of the 1st round. 
+
 By following the procedure above, all groups will have the same amount of time between their 1st and 2nd try to fix issues and improve their code. *Important: the maze, starting position and end goal will **not** change between rounds.*
 About the maze:
 - There will be no bridges (ground is flat)
