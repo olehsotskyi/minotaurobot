@@ -25,3 +25,13 @@ About the maze:
 - Walls will be at 90 degrees from each other (approximately)
 - Completing the maze means the robot goes from start to finish (pre-defined positions).
 - The robot doesn't need to follow all possible paths as long as it gets to the end of the maze.
+### Assessment Information and Schedule
+The assessment of the Introduction Project consists of a few mandatory elements. Additionally, the final grade (1-10) is based on the demonstration and report, the final grade must be ≥5.5. A summary of all these elements are: 
+- Early on in the project: setting up personal learning goals and a corresponding plan (individual).
+- Halfway the project: a progress presentation (group, not graded).
+- At the end: a demonstration of your robot in the maze (group, graded).
+- At the end: a written report of your project (group, graded).
+- At the end: reflection on the previously set personal learning goals (individual).
+- All of these elements are possible to be resit (2nd opportunity) once only if they were graded with an insufficient (i.e. fail or <5.5) in the first attempt. In such case, please contact the corresponding teacher.
+
+For the exact dates of the progress presentation and the demonstration, please refer to Schedules/Digirooster (accessible through [Hanze](www.myhanze.nl). For the submission deadlines, please refer to Submission Point in the Brightspace environment.
