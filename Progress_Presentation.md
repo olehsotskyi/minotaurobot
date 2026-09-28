@@ -5,7 +5,7 @@ Group members:
 - Sami Akasha-Mohamed
 ### Progress so far:
 #### 1. Installed LiDAR and Raspberry Pi on Create3 Robot.
-![Minotaurobot 1](images/Minotaurobot_1.jpeg)
+<img src="/images.Minotaurobot_1.jpeg" alt="Minotaurobot 1" width="300" height="200">
 #### 2. Can connect to the robot remotely through SSH.
 
 #### 3. Checked that LiDAR works with Foxglove.
