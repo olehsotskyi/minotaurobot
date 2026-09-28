@@ -1,8 +1,13 @@
 ## Progress Presentation Group 7
-
+Group members:
+- Oleh Sotskyi
+- Hermann Buma Afeseh-Bidnyugha
+- Sami Akasha-Mohamed
 ### Progress so far:
-1. Installed LiDAR and Raspberry Pi on Create3 Robot.
+#### 1. Installed LiDAR and Raspberry Pi on Create3 Robot.
 ![Minotaurobot 1](images/Minotaurobot_1.jpeg)
-3. Can connect to the robot remotely through SSH.
+#### 2. Can connect to the robot remotely through SSH.
+
 4. Checked that LiDAR works with Foxglove.
-5. Finished the ROS2 Crash Course.
+
+6. Finished the ROS2 Crash Course.
