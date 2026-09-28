@@ -1,5 +1,5 @@
 ## Progress Presentation Group 7
-Group members:
+**Group members:**
 - Oleh Sotskyi
 - Hermann Buma Afeseh-Bidnyugha
 - Sami Akasha-Mohamed
@@ -11,6 +11,6 @@ Group members:
 <img src="images/SSH_connection.jpeg" alt="SSH connection" width="600" height="1000">
 
 #### 3. Checked that LiDAR works with Foxglove.
-<img src="images/Foxglove.jpeg" alt="Foxglove" width="600" height="200">
+<img src="images/Foxglove.jpeg" alt="Foxglove" width="900" height="500">
 
 #### 4. Finished the ROS2 Crash Course.
