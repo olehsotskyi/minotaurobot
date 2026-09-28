@@ -8,6 +8,6 @@ Group members:
 ![Minotaurobot 1](images/Minotaurobot_1.jpeg)
 #### 2. Can connect to the robot remotely through SSH.
 
-4. Checked that LiDAR works with Foxglove.
+#### 3. Checked that LiDAR works with Foxglove.
 
-6. Finished the ROS2 Crash Course.
+#### 4. Finished the ROS2 Crash Course.
