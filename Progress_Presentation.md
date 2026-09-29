@@ -14,7 +14,7 @@
 <img src="images/Foxglove.jpeg" alt="Foxglove" width="900" height="500">
 
 #### 4. Finished the ROS2 Crash Course.
-<img src="images/Workspace.jpeg" alt="Workspace" width="600" height="1000">
+<img src="images/Workspace.jpeg" alt="Workspace" width="400" height="800">
 
 ### Possible approaches:
 #### 1. Using advanced libraries provided by ROS2:
