@@ -1,0 +1,5 @@
+  File "/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/odometry_ir_subscriber.py", line 1
+    cat > ~/hermann_ws/src/odometry_ir_reader/odometry_ir_reader/odometry_ir_subscriber.py << 'EOF'
+           ^
+SyntaxError: invalid syntax
+

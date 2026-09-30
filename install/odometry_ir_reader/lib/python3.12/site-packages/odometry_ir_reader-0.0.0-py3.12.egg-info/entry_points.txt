@@ -1,0 +1,2 @@
+[console_scripts]
+odometry_ir_subscriber = odometry_ir_reader.odometry_ir_subscriber:main

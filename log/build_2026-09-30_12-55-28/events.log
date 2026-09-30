@@ -1,0 +1,97 @@
+[0.000000] (-) TimerEvent: {}
+[0.001542] (odometry_ir_reader) JobQueued: {'identifier': 'odometry_ir_reader', 'dependencies': OrderedDict()}
+[0.002120] (odometry_ir_reader) JobStarted: {'identifier': 'odometry_ir_reader'}
+[0.099289] (-) TimerEvent: {}
+[0.200120] (-) TimerEvent: {}
+[0.300728] (-) TimerEvent: {}
+[0.401283] (-) TimerEvent: {}
+[0.501948] (-) TimerEvent: {}
+[0.602525] (-) TimerEvent: {}
+[0.703119] (-) TimerEvent: {}
+[0.803805] (-) TimerEvent: {}
+[0.904587] (-) TimerEvent: {}
+[1.005281] (-) TimerEvent: {}
+[1.106487] (-) TimerEvent: {}
+[1.207268] (-) TimerEvent: {}
+[1.307901] (-) TimerEvent: {}
+[1.408537] (-) TimerEvent: {}
+[1.509167] (-) TimerEvent: {}
+[1.609721] (-) TimerEvent: {}
+[1.710288] (-) TimerEvent: {}
+[1.810880] (-) TimerEvent: {}
+[1.911533] (-) TimerEvent: {}
+[2.012188] (-) TimerEvent: {}
+[2.112783] (-) TimerEvent: {}
+[2.213404] (-) TimerEvent: {}
+[2.314029] (-) TimerEvent: {}
+[2.414585] (-) TimerEvent: {}
+[2.515189] (-) TimerEvent: {}
+[2.615781] (-) TimerEvent: {}
+[2.716512] (-) TimerEvent: {}
+[2.817740] (-) TimerEvent: {}
+[2.919163] (-) TimerEvent: {}
+[3.019771] (-) TimerEvent: {}
+[3.120365] (-) TimerEvent: {}
+[3.220975] (-) TimerEvent: {}
+[3.321567] (-) TimerEvent: {}
+[3.422710] (-) TimerEvent: {}
+[3.523343] (-) TimerEvent: {}
+[3.624085] (-) TimerEvent: {}
+[3.724711] (-) TimerEvent: {}
+[3.825285] (-) TimerEvent: {}
+[3.925968] (-) TimerEvent: {}
+[4.027089] (-) TimerEvent: {}
+[4.104576] (odometry_ir_reader) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/odometry_ir_reader', 'build', '--build-base', '/home/robot/hermann_ws/build/odometry_ir_reader/build', 'install', '--record', '/home/robot/hermann_ws/build/odometry_ir_reader/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/robot/hermann_ws/src/odometry_ir_reader', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'robot', 'SSH_CLIENT': '10.149.24.27 56613 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/robot/.vscode-server/cli/servers/Stable-04c0d99f4fb0d8afe6ce4f0c58e31e183ac3e4b1/server/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/robot/create3_examples_ws/install/create3_coverage/lib:/home/robot/create3_examples_ws/install/create3_examples_msgs/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/home/robot/.vscode-server/cli/servers/Stable-04c0d99f4fb0d8afe6ce4f0c58e31e183ac3e4b1/server/bin/helpers/browser.sh', 'HOME': '/home/robot', 'OLDPWD': '/home/robot/hermann_ws', 'TERM_PROGRAM_VERSION': '1.139.1', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-de8eab5f-8bbd-4285-bb91-aa7574e13c8b.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/robot/.vscode-server/cli/servers/Stable-04c0d99f4fb0d8afe6ce4f0c58e31e183ac3e4b1/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/robot/.vscode-server/cli/servers/Stable-04c0d99f4fb0d8afe6ce4f0c58e31e183ac3e4b1/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/home/robot/hermann_ws/install:/home/robot/ros2_ws/install:/home/robot/create3_examples_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'robot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '7', 'PATH': '/home/robot/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/robot/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/robot/.vscode-server/cli/servers/Stable-04c0d99f4fb0d8afe6ce4f0c58e31e183ac3e4b1/server/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-cd1120867c.sock', 'TERM_PROGRAM': 'vscode', 'ROS_DOMAIN_ID': '7', 'AMENT_PREFIX_PATH': '/home/robot/hermann_ws/install/odometry_ir_reader:/home/robot/ros2_ws/install/scan_logger:/home/robot/create3_examples_ws/install/create3_teleop:/home/robot/create3_examples_ws/install/create3_republisher:/home/robot/create3_examples_ws/install/create3_lidar_slam:/home/robot/create3_examples_ws/install/create3_examples_py:/home/robot/create3_examples_ws/install/create3_coverage:/home/robot/create3_examples_ws/install/create3_examples_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/robot/hermann_ws/build/odometry_ir_reader', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '24f7f4dc697d19856494940fed67a775', 'SSH_CONNECTION': '10.149.24.27 56613 10.149.24.15 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/robot/hermann_ws/build/odometry_ir_reader/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages:/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages:/home/robot/ros2_ws/install/scan_logger/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_teleop/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_examples_py/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_examples_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/robot/create3_examples_ws/install/create3_republisher:/home/robot/create3_examples_ws/install/create3_lidar_slam:/home/robot/create3_examples_ws/install/create3_coverage:/home/robot/create3_examples_ws/install/create3_examples_msgs:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[4.127273] (-) TimerEvent: {}
+[4.228101] (-) TimerEvent: {}
+[4.329056] (-) TimerEvent: {}
+[4.429671] (-) TimerEvent: {}
+[4.530285] (-) TimerEvent: {}
+[4.630871] (-) TimerEvent: {}
+[4.731444] (-) TimerEvent: {}
+[4.832039] (-) TimerEvent: {}
+[4.932654] (-) TimerEvent: {}
+[5.033220] (-) TimerEvent: {}
+[5.133833] (-) TimerEvent: {}
+[5.234409] (-) TimerEvent: {}
+[5.335077] (-) TimerEvent: {}
+[5.359134] (odometry_ir_reader) StdoutLine: {'line': b'running egg_info\n'}
+[5.435235] (-) TimerEvent: {}
+[5.450824] (odometry_ir_reader) StdoutLine: {'line': b'writing ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/PKG-INFO\n'}
+[5.451995] (odometry_ir_reader) StdoutLine: {'line': b'writing dependency_links to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/dependency_links.txt\n'}
+[5.453184] (odometry_ir_reader) StdoutLine: {'line': b'writing entry points to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/entry_points.txt\n'}
+[5.454075] (odometry_ir_reader) StdoutLine: {'line': b'writing requirements to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/requires.txt\n'}
+[5.454871] (odometry_ir_reader) StdoutLine: {'line': b'writing top-level names to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/top_level.txt\n'}
+[5.535389] (-) TimerEvent: {}
+[5.635987] (-) TimerEvent: {}
+[5.647675] (odometry_ir_reader) StdoutLine: {'line': b"reading manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'\n"}
+[5.651359] (odometry_ir_reader) StdoutLine: {'line': b"writing manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'\n"}
+[5.652080] (odometry_ir_reader) StdoutLine: {'line': b'running build\n'}
+[5.652640] (odometry_ir_reader) StdoutLine: {'line': b'running build_py\n'}
+[5.653315] (odometry_ir_reader) StdoutLine: {'line': b'copying odometry_ir_reader/odometry_ir_subscriber.py -> /home/robot/hermann_ws/build/odometry_ir_reader/build/lib/odometry_ir_reader\n'}
+[5.654776] (odometry_ir_reader) StdoutLine: {'line': b'running install\n'}
+[5.681061] (odometry_ir_reader) StdoutLine: {'line': b'running install_lib\n'}
+[5.736138] (-) TimerEvent: {}
+[5.773944] (odometry_ir_reader) StdoutLine: {'line': b'copying /home/robot/hermann_ws/build/odometry_ir_reader/build/lib/odometry_ir_reader/odometry_ir_subscriber.py -> /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader\n'}
+[5.777117] (odometry_ir_reader) StdoutLine: {'line': b'byte-compiling /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/odometry_ir_subscriber.py to odometry_ir_subscriber.cpython-312.pyc\n'}
+[5.778066] (odometry_ir_reader) StderrLine: {'line': b'Sorry: IndentationError: unindent does not match any outer indentation level (odometry_ir_subscriber.py, line 17)\n'}
+[5.778727] (odometry_ir_reader) StdoutLine: {'line': b'running install_data\n'}
+[5.779302] (odometry_ir_reader) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.836296] (-) TimerEvent: {}
+[5.878313] (odometry_ir_reader) StdoutLine: {'line': b"removing '/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info' (and everything under it)\n"}
+[5.880128] (odometry_ir_reader) StdoutLine: {'line': b'Copying ../../build/odometry_ir_reader/odometry_ir_reader.egg-info to /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info\n'}
+[5.885643] (odometry_ir_reader) StdoutLine: {'line': b'running install_scripts\n'}
+[5.936448] (-) TimerEvent: {}
+[6.037084] (-) TimerEvent: {}
+[6.137667] (-) TimerEvent: {}
+[6.238212] (-) TimerEvent: {}
+[6.338764] (-) TimerEvent: {}
+[6.439358] (-) TimerEvent: {}
+[6.540005] (-) TimerEvent: {}
+[6.583397] (odometry_ir_reader) StdoutLine: {'line': b'Installing odometry_ir_subscriber script to /home/robot/hermann_ws/install/odometry_ir_reader/lib/odometry_ir_reader\n'}
+[6.585012] (odometry_ir_reader) StdoutLine: {'line': b"writing list of installed files to '/home/robot/hermann_ws/build/odometry_ir_reader/install.log'\n"}
+[6.640244] (-) TimerEvent: {}
+[6.728771] (odometry_ir_reader) CommandEnded: {'returncode': 0}
+[6.742290] (-) TimerEvent: {}
+[6.784723] (odometry_ir_reader) JobEnded: {'identifier': 'odometry_ir_reader', 'rc': 0}
+[6.787703] (-) EventReactorShutdown: {}
