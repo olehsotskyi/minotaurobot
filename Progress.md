@@ -73,3 +73,5 @@ A separate test script moved the robot while the node ran. The node logged the c
 ## Conclusion
 
 The node reads and logs the robot's position, heading, speeds and all 7 IR values, and it responds correctly when the robot moves or an object comes close. Two limits remain: the IR values are raw intensities, so the calibration table is needed before they can be used as wall distances, and odometry drifts slowly over longer runs. Next, I will fill in the measured values above and hand the IR table to the Sensors role for `wall_detector`.
+
+The End
