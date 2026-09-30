@@ -25,6 +25,8 @@ setup(
     entry_points={
         'console_scripts': [
             'code = shmove_pkg.code:main',
+            'wall_follower = shmove_pkg.wall_follower:main',
+            'test = shmove_pkg.test:main',
         ],
     },
 )
