@@ -46,10 +46,11 @@ class OdometryIRSubscriber(Node):
     def on_ir(self, msg):
         """Called every time an /ir_intensity message arrives."""
         self.ir_values = [
-            f"{r.header.frame_id.replace('ir_intensity_', '')}={r.value}"
+            {r.header.frame_id.replace('ir_intensity_', ''): r.value}
             for r in msg.readings
         ]
-        self.get_logger().info('IR    ' + '  '.join(self.ir_values))
+        self.get_logger().info('IR    ' + '  '.join([f"{k}={v}" for d in self.ir_values for k, v in d.items()]))
+        
         ## Getter Funtion to get the IR Values Array
     def get_ir_values(self):
         return list(self.ir_values)

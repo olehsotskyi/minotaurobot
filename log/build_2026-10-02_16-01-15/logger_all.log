@@ -1,0 +1,140 @@
+[0.943s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.943s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffffa73f2ff0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffa75aba10>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffa75aba10>>, mixin_verb=('build',))
+[1.271s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.272s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.273s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.273s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/robot/hermann_ws'
+[1.274s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.274s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.274s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.275s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.275s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.275s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.275s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.276s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.276s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.434s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.434s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.435s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.435s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.435s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.436s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.436s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.437s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.438s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['ignore', 'ignore_ament_install']
+[1.438s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'ignore'
+[1.438s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'ignore_ament_install'
+[1.439s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['colcon_pkg']
+[1.439s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'colcon_pkg'
+[1.439s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['colcon_meta']
+[1.439s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'colcon_meta'
+[1.439s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['ros']
+[1.440s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'ros'
+[1.440s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['cmake', 'python']
+[1.440s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'cmake'
+[1.440s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'python'
+[1.441s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['python_setup_py']
+[1.441s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'python_setup_py'
+[1.441s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.442s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.442s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.443s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.443s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.443s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.444s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.444s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.444s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.445s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.445s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.445s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.445s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.445s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.445s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.446s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.446s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.446s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.446s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.446s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.447s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extensions ['ignore', 'ignore_ament_install']
+[1.447s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extension 'ignore'
+[1.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extension 'ignore_ament_install'
+[1.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extensions ['colcon_pkg']
+[1.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extension 'colcon_pkg'
+[1.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extensions ['colcon_meta']
+[1.448s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extension 'colcon_meta'
+[1.449s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extensions ['ros']
+[1.449s] Level 1:colcon.colcon_core.package_identification:_identify(src/odometry_ir_reader) by extension 'ros'
+[1.463s] DEBUG:colcon.colcon_core.package_identification:Package 'src/odometry_ir_reader' with type 'ros.ament_python' and name 'odometry_ir_reader'
+[1.463s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.463s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.463s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.464s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.464s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.601s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.601s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.631s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/robot/hermann_ws/install
+[1.635s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/robot/ros2_ws/install
+[1.639s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/robot/create3_examples_ws/install
+[1.651s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 297 installed packages in /opt/ros/jazzy
+[1.659s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.894s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'cmake_args' from command line to 'None'
+[1.894s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'cmake_target' from command line to 'None'
+[1.894s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.894s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'cmake_clean_cache' from command line to 'False'
+[1.894s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'cmake_clean_first' from command line to 'False'
+[1.894s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'cmake_force_configure' from command line to 'False'
+[1.895s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'ament_cmake_args' from command line to 'None'
+[1.895s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'catkin_cmake_args' from command line to 'None'
+[1.895s] Level 5:colcon.colcon_core.verb:set package 'odometry_ir_reader' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.895s] DEBUG:colcon.colcon_core.verb:Building package 'odometry_ir_reader' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/robot/hermann_ws/build/odometry_ir_reader', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/robot/hermann_ws/install/odometry_ir_reader', 'merge_install': False, 'path': '/home/robot/hermann_ws/src/odometry_ir_reader', 'symlink_install': False, 'test_result_base': None}
+[1.896s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.899s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.900s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/robot/hermann_ws/src/odometry_ir_reader' with build type 'ament_python'
+[1.900s] Level 1:colcon.colcon_core.shell:create_environment_hook('odometry_ir_reader', 'ament_prefix_path')
+[1.923s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.924s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/hook/ament_prefix_path.ps1'
+[1.929s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/hook/ament_prefix_path.dsv'
+[1.933s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/hook/ament_prefix_path.sh'
+[1.938s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.939s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.037s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/robot/hermann_ws/src/odometry_ir_reader'
+[3.038s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.038s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.151s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/robot/hermann_ws/src/odometry_ir_reader': PYTHONPATH=/home/robot/hermann_ws/build/odometry_ir_reader/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/odometry_ir_reader build --build-base /home/robot/hermann_ws/build/odometry_ir_reader/build install --record /home/robot/hermann_ws/build/odometry_ir_reader/install.log --single-version-externally-managed install_data
+[9.981s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/robot/hermann_ws/src/odometry_ir_reader' returned '0': PYTHONPATH=/home/robot/hermann_ws/build/odometry_ir_reader/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/odometry_ir_reader build --build-base /home/robot/hermann_ws/build/odometry_ir_reader/build install --record /home/robot/hermann_ws/build/odometry_ir_reader/install.log --single-version-externally-managed install_data
+[10.010s] Level 1:colcon.colcon_core.environment:checking '/home/robot/hermann_ws/install/odometry_ir_reader' for CMake module files
+[10.014s] Level 1:colcon.colcon_core.environment:checking '/home/robot/hermann_ws/install/odometry_ir_reader' for CMake config files
+[10.019s] Level 1:colcon.colcon_core.environment:checking '/home/robot/hermann_ws/install/odometry_ir_reader/lib'
+[10.019s] Level 1:colcon.colcon_core.environment:checking '/home/robot/hermann_ws/install/odometry_ir_reader/bin'
+[10.020s] Level 1:colcon.colcon_core.environment:checking '/home/robot/hermann_ws/install/odometry_ir_reader/lib/pkgconfig/odometry_ir_reader.pc'
+[10.021s] Level 1:colcon.colcon_core.environment:checking '/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages'
+[10.022s] Level 1:colcon.colcon_core.shell:create_environment_hook('odometry_ir_reader', 'pythonpath')
+[10.022s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/hook/pythonpath.ps1'
+[10.025s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/hook/pythonpath.dsv'
+[10.028s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/hook/pythonpath.sh'
+[10.031s] Level 1:colcon.colcon_core.environment:checking '/home/robot/hermann_ws/install/odometry_ir_reader/bin'
+[10.032s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(odometry_ir_reader)
+[10.033s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/package.ps1'
+[10.038s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/package.dsv'
+[10.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/package.sh'
+[10.049s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/package.bash'
+[10.056s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/package.zsh'
+[10.062s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/robot/hermann_ws/install/odometry_ir_reader/share/colcon-core/packages/odometry_ir_reader)
+[10.064s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[10.066s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[10.067s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[10.068s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[10.069s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[10.069s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/hermann_ws/install/local_setup.ps1'
+[10.075s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot/hermann_ws/install/_local_setup_util_ps1.py'
+[10.110s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/hermann_ws/install/setup.ps1'
+[10.121s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/hermann_ws/install/local_setup.sh'
+[10.127s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot/hermann_ws/install/_local_setup_util_sh.py'
+[10.130s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/hermann_ws/install/setup.sh'
+[10.139s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/hermann_ws/install/local_setup.bash'
+[10.143s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/hermann_ws/install/setup.bash'
+[10.151s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/hermann_ws/install/local_setup.zsh'
+[10.155s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/hermann_ws/install/setup.zsh'
