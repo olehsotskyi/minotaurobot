@@ -68,14 +68,16 @@ Fix: removed it and cloned the team repo into ~/hermann_ws on my branch hermann.
 
 ## Test results
 **IR Test**
-Values are IR intensity, with the measured distance in brackets.
+## IR readings by robot orientation
+
+Values are IR intensity, with the measured distance in brackets. The robot sits in a corner formed by two walls (90 degress); each row describes where those walls are relative to the robot.
 
 | Orientation | Side left | Left | Front left | Front center left | Front center right | Front right | Right |
-|:-----------:|-----------|------|------------|-------------------|--------------------|-------------|-------|
-| ↑ | 3900 (6 cm) / 3000 (9 cm) | 570 (11 cm) / 1050 (7 cm) | 560 (5.5 cm) / 3500 (3 cm) | 2050 (4.5 cm) / 3200 (2.5 cm) | 1800 (5.1 cm) / 3200 (3 cm) | 270 (8.5 cm) / 600 (7.5 cm) | 15 (>22 cm) / 20 (>24.5 cm) |
-| ← | 20 (>69 cm) | 750 (8.5 cm) | 1600 (3 cm) | 3700 (2.2 cm) | 3050 (3.2 cm) | 630 (9.6 cm) | 1100 (5 cm) |
-| ↓ | 10 | 18 | 28 | 27 | 20 | 8 | 800 (6.2 cm) |
-| → | 1000 (6.2 cm) | 80 (16 cm) | 23 | 35 | 25 | 7 | 5 |
+|-------------|-----------|------|------------|-------------------|--------------------|-------------|-------|
+| Facing into the corner: wall ahead, wall on its left | 3900 (6 cm) / 3000 (9 cm) | 570 (11 cm) / 1050 (7 cm) | 560 (5.5 cm) / 3500 (3 cm) | 2050 (4.5 cm) / 3200 (2.5 cm) | 1800 (5.1 cm) / 3200 (3 cm) | 270 (8.5 cm) / 600 (7.5 cm) | 15 (>22 cm) / 20 (>24.5 cm) |
+| Facing into the corner: wall ahead, wall on its right | 20 (>69 cm) | 750 (8.5 cm) | 1600 (3 cm) | 3700 (2.2 cm) | 3050 (3.2 cm) | 630 (9.6 cm) | 1100 (5 cm) |
+| Facing away from the corner: open space ahead, wall on its right | 10 | 18 | 28 | 27 | 20 | 8 | 800 (6.2 cm) |
+| Facing away from the corner: open space ahead, wall on its left | 1000 (6.2 cm) | 80 (16 cm) | 23 | 35 | 25 | 7 | 5 |
 
 ## IR readings by distance
 
