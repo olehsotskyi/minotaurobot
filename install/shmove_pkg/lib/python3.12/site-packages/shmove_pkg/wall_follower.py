@@ -8,6 +8,7 @@ class WallFollower(Node):
     def __init__(self):
         super().__init__("WallFollower")
         self.action_client = ActionClient(self, WallFollow, '/robot_7/wall_follow')
+        self.send_goal()
 
     def send_goal(self):
         wfGoal = WallFollow.Goal()
@@ -15,20 +16,39 @@ class WallFollower(Node):
 
         wfGoal.max_runtime = Duration()
 
-        wfGoal.max_runtime.sec = 300
+        wfGoal.max_runtime.sec = 30
         wfGoal.max_runtime.nanosec = 0
 
         self.action_client.wait_for_server()
         
         print("Publishing Goal!")
 
-        return self.action_client.send_goal_async(wfGoal)
+        self.action_client.send_goal_async(wfGoal)
 
 def main():
     rclpy.init()
     controller = WallFollower()
-    controller.send_goal()
-    rclpy.spin(controller)
+    # try:
+    #     controller.send_goal()
+    #     rclpy.spin(controller)
+    # except KeyboardInterrupt:    
+    #     controller.destroy_node()
+    #     rclpy.shutdown()
+
+    # WALL_FOLLOW = True
+    # while WALL_FOLLOW:
+    #     try:
+    #         controller.send_goal()
+    #         rclpy.spin(controller)
+    #     except KeyboardInterrupt:
+    #         WALL_FOLLOW = False
+
+    #controller.send_goal()
+    try:
+        rclpy.spin(controller)
+    except KeyboardInterrupt:
+        controller.destroy_node()
+        rclpy._is_shutdown = True
 
 if __name__ == '__main__':
     main()

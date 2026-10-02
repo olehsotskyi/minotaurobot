@@ -1,11 +1,13 @@
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/go_to_goal.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/test.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__init__.py
-/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/code.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/wall_follower.py
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/shmoving_algorithm_1.py
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/go_to_goal.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/test.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/__init__.cpython-312.pyc
-/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/code.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/wall_follower.cpython-312.pyc
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/shmoving_algorithm_1.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index/resource_index/packages/shmove_pkg
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/package.xml
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info/dependency_links.txt
@@ -15,6 +17,7 @@
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info/top_level.txt
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info/PKG-INFO
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info/requires.txt
-/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/code
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/go_to_goal
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/shmoving_algorithm_1
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/test
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/wall_follower
