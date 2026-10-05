@@ -9,6 +9,7 @@ setup.py
 ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/top_level.txt
 ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/zip-safe
 odometry_ir_reader/__init__.py
+odometry_ir_reader/bumper_sensor_reader.py
 odometry_ir_reader/odometry_ir_subscriber.py
 resource/odometry_ir_reader
 test/test_copyright.py

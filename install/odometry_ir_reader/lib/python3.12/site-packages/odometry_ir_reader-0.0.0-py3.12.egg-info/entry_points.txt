@@ -1,2 +1,3 @@
 [console_scripts]
+bumper_sensor_reader = odometry_ir_reader.bumper_sensor_reader:main
 odometry_ir_subscriber = odometry_ir_reader.odometry_ir_subscriber:main

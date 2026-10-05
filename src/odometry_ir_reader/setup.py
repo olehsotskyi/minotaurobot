@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'odometry_ir_subscriber = odometry_ir_reader.odometry_ir_subscriber:main',
+            'bumper_sensor_reader = odometry_ir_reader.bumper_sensor_reader:main',
         ],
     },
 )

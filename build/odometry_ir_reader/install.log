@@ -1,7 +1,9 @@
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/__init__.py
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/odometry_ir_subscriber.py
+/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/bumper_sensor_reader.py
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/__pycache__/__init__.cpython-312.pyc
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/__pycache__/odometry_ir_subscriber.cpython-312.pyc
+/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/__pycache__/bumper_sensor_reader.cpython-312.pyc
 /home/robot/hermann_ws/install/odometry_ir_reader/share/ament_index/resource_index/packages/odometry_ir_reader
 /home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader/package.xml
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info/dependency_links.txt
@@ -11,4 +13,5 @@
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info/top_level.txt
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info/PKG-INFO
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info/requires.txt
+/home/robot/hermann_ws/install/odometry_ir_reader/lib/odometry_ir_reader/bumper_sensor_reader
 /home/robot/hermann_ws/install/odometry_ir_reader/lib/odometry_ir_reader/odometry_ir_subscriber

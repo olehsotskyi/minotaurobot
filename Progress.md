@@ -94,3 +94,21 @@ Values are IR intensity, with the measured distance in brackets. The robot sits 
 ## Conclusion
 
 The node reads and logs the robot's position, heading, speeds and all 7 IR values, and it responds correctly when the robot moves or an object comes close. Two limits remain: the IR values are raw intensities, so the calibration table is needed before they can be used as wall distances, and odometry drifts slowly over longer runs. Next, I will fill in the measured values above and hand the IR table to the Sensors role for `wall_detector`.
+
+
+# Bumper Sensor Detector Test (Hermann)
+Goal: Write a node that subscribes to the HazardDetection Topic and then logs and store values
+The  robot publishes the the hazard detaction message interface to the hazard_detection topic which consits of the bumper sensor values, wheels, tilt etc. In this scenario we are more focused on the Bump values. 
+The robot has 5 sensors are:-
+<ul>
+<li>bump_left</li>
+<li>bump_front_left</li>
+<li>bump_front_center</li>
+<li>bump_front_right</li>
+<li>bump_right</li>
+<ul>
+
+Unlike the Odometry, and other sensors, Bump onluy records a 1 or nothing if the sensor receives input or not. Based on my test, the Sensors correctly recorded the values when i touched each position of the sensor. 
+
+## Conclusion
+The Node reads and logs all types for each sensor when they hit an object. 

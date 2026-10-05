@@ -1,0 +1,5 @@
+  File "/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/bumper_sensor_reader.py", line 4
+    from irobot_create_msgs/msg/HazardDetectionVector import HazardDetectionVector
+                           ^
+SyntaxError: invalid syntax
+
