@@ -1,0 +1,5 @@
+  File "/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/wall_shmover.py", line 7
+    super().__init__(self):
+                          ^
+SyntaxError: invalid syntax
+

@@ -45,7 +45,7 @@ def main():
 
     #controller.send_goal()
     try:
-        rclpy.spin(controller)
+        rclpy.spin_once(controller)
     except KeyboardInterrupt:
         controller.destroy_node()
         rclpy._is_shutdown = True
