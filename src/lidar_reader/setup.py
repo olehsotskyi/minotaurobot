@@ -25,6 +25,7 @@ setup(
        entry_points={
         'console_scripts': [
             'lidar_subscriber = lidar_reader.lidar_subscriber:main',
+            'laser = lidar_reader.Laser:main',
         ],
     },  
 )
