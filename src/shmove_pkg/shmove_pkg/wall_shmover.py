@@ -5,16 +5,18 @@ from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import IrIntensityVector
+from std_msgs.msg import Float32
+from sensor_msgs.msg import LaserScan
 
 class ControlNode(Node):
     def __init__(self):
         super().__init__('control_node')
-        self.desired_distance_right = 8  # Desired distance from the right wall in meters
+        self.desired_distance_right = 250  # Desired distance from the right wall in meters
         # Change this to match your vehicle
-        self.kp_steering = 10.0
-        self.ki_steering = 0.0
-        self.kd_steering = 0.0
-        self.kp_throttle = 0.08
+        self.kp_steering = 0.011
+        self.ki_steering = 0.0005
+        self.kd_steering = 0.0001
+        self.kp_throttle = 0.002
         self.max_throttle = 1.0
 
         self.last_error = 0.0
@@ -30,15 +32,24 @@ class ControlNode(Node):
 
         # Subscribe to the Lidar Processing Node's distance data
         self.ir_subscription = self.create_subscription(IrIntensityVector, '/robot_7/ir_intensity', self.ir_values, qos_profile_sensor_data)
+        # self.lidar_subscription = self.create_subscription(
+        #     Float32,
+        #     'lidar_distance',
+        #     self.lidar_callback,
+        #     qos_profile_sensor_data)
 
-        self.current_distance = 0.35
+        self.current_distance = 260
+        #self.current_distance = float('inf')
 
         self.get_logger().info('Control Node has been started.')
 
     def ir_values(self, msg):
         self.ir_values = [r.value for r in msg.readings]
-        self.current_distance = (self.ir_values[6] + self.ir_values[3])/100
+        self.current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
 
+    # def lidar_callback(self, msg):
+    #     self.current_distance = msg.data
+    
     def control_loop(self):
         # if self.current_distance == float('inf'):
         #     return

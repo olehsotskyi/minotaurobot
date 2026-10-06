@@ -14,6 +14,7 @@ shmove_pkg/go_to_goal.py
 shmove_pkg/mover.py
 shmove_pkg/shmoving_algorithm_1.py
 shmove_pkg/test.py
+shmove_pkg/test2.py
 shmove_pkg/wall_follower.py
 shmove_pkg/wall_shmover.py
 test/test_copyright.py

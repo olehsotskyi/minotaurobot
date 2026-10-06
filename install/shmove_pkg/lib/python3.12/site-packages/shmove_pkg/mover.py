@@ -19,7 +19,7 @@ class Mover(Node):
 
         msg.angular.x = 0.0
         msg.angular.y = 0.0
-        msg.angular.z = -2.0
+        msg.angular.z = -5.0
 
         self.publisher.publish(msg)
 

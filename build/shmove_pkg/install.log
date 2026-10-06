@@ -1,5 +1,6 @@
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/go_to_goal.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/mover.py
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/test2.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/test.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/wall_shmover.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__init__.py
@@ -7,6 +8,7 @@
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/shmoving_algorithm_1.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/go_to_goal.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/mover.cpython-312.pyc
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/test2.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/test.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/wall_shmover.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/__init__.cpython-312.pyc
@@ -25,5 +27,6 @@
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/mover
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/shmoving_algorithm_1
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/test
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/test2
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/wall_follower
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/wall_shmover

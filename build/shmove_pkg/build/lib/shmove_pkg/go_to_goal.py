@@ -17,8 +17,8 @@ class ShmovingController(Node):
         shmovingGoal.goal_pose = PoseStamped()
         shmovingGoal.max_translation_speed = 1.0
 
-        p_x = 2.0
-        p_y = 2.0
+        p_x = 3.0
+        p_y = 3.0
         p_z = 0.0
 
         shmovingGoal.goal_pose.pose.position.x = p_x
