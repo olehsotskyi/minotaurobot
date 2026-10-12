@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'go_to_goal = shmove_pkg.go_to_goal:main',
+            'shmove_to_goal = shmove_pkg.shmove_to_goal:main',
             'wall_follower = shmove_pkg.wall_follower:main',
             'mover = shmove_pkg.mover:main',
             'shmoving_algorithm_1 = shmove_pkg.shmoving_algorithm_1:main',

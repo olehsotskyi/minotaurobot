@@ -14,10 +14,10 @@ class ControlNode(Node):
         self.desired_distance_right = 250  # Desired distance from the right wall in meters
         # Change this to match your vehicle
         self.kp_steering = 0.011
-        self.ki_steering = 0.0005
+        self.ki_steering = 0.00015
         self.kd_steering = 0.0001
         self.kp_throttle = 0.002
-        self.max_throttle = 2.0
+        self.max_throttle = 1.0
 
         self.last_error = 0.0
         self.integral = 0.0

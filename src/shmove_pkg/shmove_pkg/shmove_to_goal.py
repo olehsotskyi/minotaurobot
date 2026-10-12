@@ -10,21 +10,29 @@ from irobot_create_msgs.msg import IrIntensityVector
 from std_msgs.msg import Float32
 from sensor_msgs.msg import LaserScan
 
-X = 2.0
-Y = 2.0
+X = -1.66
+Y = 0.98
 
 class NavigationController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
         super().__init__('NavigationController')
 
+        self.x = 0.0
+        self.y = 0.0
+        self.phi = 0.0
+
         self.x_desired = x_goal
         self.y_desired = y_goal
+        self.dist_precision = 0.1
 
-        self.kp = 0.0
-        self.ki = 0.0
-        self.kd = 0.0
+        self.kp_steering = 10.0
+        self.ki_steering = 0.1
+        self.kd_steering = 0.1
 
-        self.dt = 0.0
+        self.kp_throttle = 1.0
+        self.max_throttle = 1.0
+
+        self.dt = 0.01
         self.last_error = 0.0
         self.accumulated_error = 0.0
 
@@ -32,12 +40,14 @@ class NavigationController(Node):
 
         self.wheel_speed_publisher = self.create_publisher(Twist, "/robot_7/cmd_vel", 10)
 
+        self.timer = self.create_timer(self.dt, self.control_loop)
+
     def odometry_callback(self, msg):
         self.x = msg.pose.pose.position.x
         self.y = msg.pose.pose.position.y
         q = msg.pose.pose.orientation
 
-        self.phi = np.atan2(2 * (q.w * q.z + q.x * q.y), 1 - 2 * (q.y ** 2 + q.z ** 2))
+        self.phi = np.arctan2(2 * (q.w * q.z + q.x * q.y), 1 - 2 * (q.y ** 2 + q.z ** 2))
 
     def get_odometry_values(self):
         return self.x, self.y, self.phi
@@ -56,11 +66,45 @@ class NavigationController(Node):
 
         return dist_err, phi_err_correct
 
-    def get_pid_values(self, e, e_previous, e_accumulated):
-        pass
+    def get_pid_values(self):
+        dist_err, phi_err = self.get_pose_error()
+
+        if dist_err > self.dist_precision:
+            P = self.kp_steering*phi_err
+            I = self.accumulated_error + self.ki_steering*phi_err*self.dt
+            D = self.kd_steering*(phi_err - self.last_error)/self.dt
+
+            steering_control = P + I + D
+            steering_control = max(-2.0, min(2.0, steering_control))
+
+            throttle_control = self.max_throttle - (self.kp_throttle * abs(phi_err))
+            throttle_control = max(0.01, min(self.max_throttle, throttle_control))
+
+            self.last_error = phi_err
+            self.accumulated_error = I
+
+            return steering_control, throttle_control
+        else:
+            return 0.0, 0.0
 
     def control_loop(self):
-        dist_err, phi_err = self.get_pose_error()
+        steering_control, throttle_control = self.get_pid_values()
+
+        # print(error)
+        # print(steering_control)
+        # print(throttle_control)
+
+        msg = Twist()
+
+        msg.linear.x = throttle_control
+        msg.linear.y = 0.0
+        msg.linear.z = 0.0
+
+        msg.angular.x = 0.0
+        msg.angular.y = 0.0
+        msg.angular.z = steering_control
+
+        self.wheel_speed_publisher.publish(msg)
         
 
 def main():

@@ -12,6 +12,7 @@ resource/shmove_pkg
 shmove_pkg/__init__.py
 shmove_pkg/go_to_goal.py
 shmove_pkg/mover.py
+shmove_pkg/shmove_to_goal.py
 shmove_pkg/shmoving_algorithm_1.py
 shmove_pkg/test.py
 shmove_pkg/test2.py
