@@ -110,6 +110,7 @@ class Laser(Node):
                 y = distance * math.sin(angle)
 
                 if 0.18 <= x <= 0.60 and abs(y) <= 0.2195:
+                    
 
                     front_distances.append(distance)
                     bumper_distances.append(x - 0.18)
@@ -246,9 +247,8 @@ class Laser(Node):
         }
 
         if self.goal_x is None:
-            self.goal_x = x - math.sin(yaw) * 1.0
-            self.goal_y = y + math.cos(yaw) * 1.0
-
+            self.goal_x = -1.8  # X coordinate of Point B (metres)
+            self.goal_y = 0.13  # Y coordinate of Point B (metres)
 
         result = self.cal_dir(self.goal_x, self.goal_y)
 

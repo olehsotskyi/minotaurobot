@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'lidar_subscriber = lidar_reader.lidar_subscriber:main',
             'laser = lidar_reader.Laser:main',
+            'laser_v2 = lidar_reader.Laser_v2:main',
         ],
     },  
 )
