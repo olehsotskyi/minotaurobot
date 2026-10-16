@@ -16,6 +16,14 @@
 #### 4. Finished the ROS2 Crash Course.
 <img src="images/Workspace.jpeg" alt="Workspace" width="400" height="800">
 
+#### 5. Verified LiDAR topic structure programmatically (ROS2 node).
+Identified the LiDAR as an RPLidar A1/A2 (115200 baud) publishing on `/scan`
+(`sensor_msgs/msg/LaserScan`, frame_id `laser`): full 360° coverage,
+~720 points per scan, 0.15-12.0 m range, ~8.2 Hz scan rate. Built a ROS2
+subscriber node confirming front/left/right/back distances update correctly
+in real time, and confirmed that invalid (`inf`) range readings correlate
+with zero signal intensity at the same point.
+
 ### Possible approaches:
 #### 1. Using advanced libraries provided by ROS2:
 This approach relies on using the LiDAR to create a map of the maze first, and navigate this known map afterwards.
@@ -27,3 +35,4 @@ Implementing one of the so called **Bug** algorithms would be the base of this a
   1. Move from starting point to goal point with a direct linear trajectory.
   2. If there is an obstacle detected with a LiDAR then avoid obstacle by making a decision to follow the obstacle wall left or right using IR sensors.
   3. When a point on the initial trajectory is reached stop avoiding the obstacle and continue moving towards the goal.
+  4. LiDAR data confirmed suitable for approach 2: per-direction distance readings (front/left/right/back) are reliable and update in real time, supporting obstacle detection for a Bug-style wall-following algorithm.
