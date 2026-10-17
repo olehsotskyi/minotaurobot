@@ -5,6 +5,7 @@ import rclpy.node as Node
 from rclpy.qos import qos_profile_sensor_data
 
 from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Pose
 from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
 from std_msgs.msg import Float32
@@ -17,6 +18,7 @@ class ShmovingController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
         super().__init__('ShmovingController')
 
+        # goal coordinates
         self.x_goal = x_goal
         self.y_goal = y_goal
 
@@ -35,37 +37,47 @@ class ShmovingController(Node):
         
         # additional control attributes
         self.last_side = 1
-        self.dt = 0.0
+        self.dt = 0.01
         self.state = 'reset pose'
 
+        # wall follower PID parameters
         self.wf_pid = {
-            'kp linear' : 0.0,
-            'kp angular' : 0.0,
-            'ki angular' : 0.0,
-            'kd angular' : 0.0,
+            'kp linear' : 0.002,
+            'kp angular' : 0.011,
+            'ki angular' : 0.00015,
+            'kd angular' : 0.0001,
             'last error' : 0.0,
             'accumulated error' : 0.0
         }
 
+        # go to goal PID parameters
         self.gtg_pid = {
-            'kp linear' : 0.0,
-            'kp angular' : 0.0,
-            'ki angular' : 0.0,
-            'kd angular' : 0.0,
+            'kp linear' : 1.0,
+            'kp angular' : 10.0,
+            'ki angular' : 0.1,
+            'kd angular' : 0.1,
             'last error' : 0.0,
             'accumulated error' : 0.0
         }
 
         # thresholds
-        self.wall_distance = 0.0
+        self.wall_distance = 250.0
         self.dist_precision = 0.1
+        self.phi_precision = 0.1
+        self.max_linear = 2.0
+        self.min_linear = 0.01
+        self.max_angular = 2.0
+        self.min_angular = -2.0
 
+        # topic subscriptions
         self.odometry_subscription = self.create_subscription(Odometry, '/robot_7/odom', self.odom_callback, qos_profile_sensor_data)
         self.ir_subscription = self.create_subscription(IrIntensityVector, '/robot_7/ir_intensity', self.ir_callback, qos_profile_sensor_data)
         self.lidar_subscription = self.create_subscription()
-        
+
+        # topic publishers        
         self.wheel_speed_publisher = self.create_publisher(Twist, "/robot_7/cmd_vel", 10)
 
+        # timer
         self.timer = self.create_timer(self.dt, self.state_machine)
 
     def lidar_callback(self, msg):
@@ -94,15 +106,19 @@ class ShmovingController(Node):
         return dist_err, phi_err_correct
     
     def get_wall_error(self, side):
-        if side == 1:
+        if side == -1:
             current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
-        elif side == -1:
+        elif side == 1:
             current_distance = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[3])/4
         return self.wall_distance - current_distance
     
     def check_goal(self):
         dist_err, _ = self.get_pose_error()
         return dist_err > self.dist_precision
+
+    def check_orientation(self):
+        _, phi_err = self.get_pose_error()
+        return abs(phi_err) > self.phi_precision
     
     def pid(self, pid_values, error):
         P = pid_values['kp angular'] * error
@@ -110,14 +126,14 @@ class ShmovingController(Node):
         D = pid_values['kd angular'] * (error - pid_values['last error']) / self.dt
 
         angular = P + I + D
-        angular = max(-2.0, min(2.0, angular))
+        angular = max(self.min_angular, min(self.max_angular, angular))
 
         linear = self.max_linear - (pid_values['kp linear'] * abs(error))
-        linear = max(0.01, min(self.max_linear, linear))
+        linear = max(self.min_linear, min(self.max_linear, linear))
 
         return linear, angular, I
     
-    def send_wheel_commands(self):
+    def send_wheel_commands(self, side=-1):
         msg = Twist()
         
         msg.linear.x = self.linear
@@ -126,7 +142,7 @@ class ShmovingController(Node):
 
         msg.angular.x = 0.0
         msg.angular.y = 0.0
-        msg.angular.z = -1*self.angular
+        msg.angular.z = side * self.angular
 
         self.wheel_speed_publisher.publish(msg)
     
@@ -136,65 +152,74 @@ class ShmovingController(Node):
     def turn_to_goal(self):
         _, phi_err = self.get_pose_error()
 
+        self.send_wheel_commands()
+
     
     def go_to_goal(self):
         _, phi_err = self.get_pose_error()
-        linear, angular, self.gtg_pid['accumulated error'] = self.pid(self.gtg_pid, phi_err)
+        self.linear, self.angular, self.gtg_pid['accumulated error'] = self.pid(self.gtg_pid, phi_err)
         self.gtg_pid['last error'] = phi_err
-        return linear, angular
+
+        self.send_wheel_commands()
 
     def follow_wall(self, side):
         wall_err = self.get_wall_error(side)
-        linear, angular, self.wf_pid['accumulated error'] = self.pid(self.wf_pid, wall_err)
-        self.gtg_pid['last error'] = wall_err
-        return linear, angular
+        self.linear, self.angular, self.wf_pid['accumulated error'] = self.pid(self.wf_pid, wall_err)
+        self.wf_pid['last error'] = wall_err
+
+        self.send_wheel_commands(side)
 
     def stop(self):
-        pass
+        self.linear, self.angular = 0.0, 0.0
+        self.send_wheel_commands()
+
+        self.destroy_node()
+        rclpy.shutdown()
     
     def state_machine(self):
-        goal_reached = self.check_goal()
-
         if self.state == 'reset pose':
             self.reset_pose()
-            if goal_reached:
+            if self.check_goal():
                 self.state = 'stop'
-            elif not goal_reached:
+            elif not self.check_goal():
                 self.state == 'turn to goal'
 
         if self.state == 'turn to goal':
-            self.angular = self.turn_to_goal()
-            if self.obstacle == 'none':
-                self.state = 'go to goal'
-            elif self.obstacle == 'right':
-                self.state = 'follow wall'
-                side = 1 #right side
-            elif self.obstacle == 'left':
-                self.state = 'follow wall'
-                side = -1 #left side
-            elif self.obstacle == 'front':
-                self.state = 'follow wall'
-                side = -1 * self.last_side
+            self.turn_to_goal()
+            if self.check_orientation():
+                if self.obstacle == 'none':
+                    self.state = 'go to goal'
+                elif self.obstacle == 'right':
+                    self.state = 'follow wall'
+                    side = -1 #right side
+                elif self.obstacle == 'left':
+                    self.state = 'follow wall'
+                    side = 1 #left side
+                elif self.obstacle == 'front':
+                    self.state = 'follow wall'
+                    side = -1 * self.last_side
+            elif not self.check_orientation():
+                pass
         
         if self.state == 'go to goal':
-            self.linear, self.angular = self.go_to_goal()
-            if goal_reached:
+            self.go_to_goal()
+            if self.check_goal():
                 self.state = 'stop'
             elif self.obstacle == 'none':
                 pass
             elif self.obstacle == 'right':
                 self.state = 'follow wall'
-                side = 1 #right side
+                side = -1 #right side
             elif self.obstacle == 'left':
                 self.state = 'follow wall'
-                side = -1 #left side
+                side = 1 #left side
             elif self.obstacle == 'front':
                 self.state = 'follow wall'
                 side = -1 * self.last_side
         
         if self.state == 'follow wall':
-            self.linear, self.angular = self.follow_wall(side)
-            if goal_reached:
+            self.follow_wall(side)
+            if self.check_goal():
                 self.state = 'stop'
             elif self.obstacle == 'none':
                 self.state = 'go to goal'
@@ -204,8 +229,19 @@ class ShmovingController(Node):
         if self.state == 'stop':
             self.stop()
 
-def main():
-    pass
+def main(args=None):
+    rclpy.init(args=args)
+    node = None
+
+    try:
+        node = ShmovingController()
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass  # Handle Ctrl+C gracefully
+    finally:
+        if node is not None:
+            node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
