@@ -3,6 +3,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 from rclpy.qos import qos_profile_sensor_data
+from std_msgs.msg import Float32
 import math
 
 
@@ -10,7 +11,11 @@ class Laser(Node):
 
     def __init__(self):
         super().__init__('laser_test')
-
+        self.publisher_ = self.create_publisher(
+            Float32,
+            '/lidar_distance',
+            10
+        )
         self.odometry_values = None
         
         self.last_lidar_print_time = None
