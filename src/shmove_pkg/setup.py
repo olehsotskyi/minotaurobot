@@ -30,6 +30,7 @@ setup(
             'mover = shmove_pkg.mover:main',
             'shmoving_algorithm_1 = shmove_pkg.shmoving_algorithm_1:main',
             'wall_shmover = shmove_pkg.wall_shmover:main',
+            'starting_pose = shmove_pkg.starting_pose:main',
             'test = shmove_pkg.test:main',
             'test2 = shmove_pkg.test2:main',
         ],

@@ -1,7 +1,7 @@
 import numpy as np
 
 import rclpy
-import rclpy.node as Node
+from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 
 from geometry_msgs.msg import Twist
