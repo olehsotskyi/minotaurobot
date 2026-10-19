@@ -10,8 +10,8 @@ from irobot_create_msgs.msg import IrIntensityVector
 from std_msgs.msg import Float32
 from sensor_msgs.msg import LaserScan
 
-X = -1.66
-Y = 0.98
+X = -0.894
+Y = 0.888
 
 class NavigationController(Node):
     def __init__(self, x_goal=X, y_goal=Y):

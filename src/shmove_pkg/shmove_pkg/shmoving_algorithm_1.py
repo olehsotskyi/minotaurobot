@@ -4,15 +4,16 @@ import rclpy
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 
+from irobot_create_msgs.srv import ResetPose
+
 from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Pose
 from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
-from std_msgs.msg import Float32
 from sensor_msgs.msg import LaserScan
 
-X = 0.0
-Y = 0.0
+X = -0.892
+Y = 1.006
 
 class ShmovingController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
@@ -32,11 +33,12 @@ class ShmovingController(Node):
         self.angular = 0.0
 
         # sensor readings
-        self.ir_values = []
+        self.ir_values = [0.0] * 7
         self.obstacle = 'none'
         
         # additional control attributes
         self.last_side = 1
+        self.side = -1
         self.dt = 0.01
         self.state = 'reset pose'
 
@@ -64,7 +66,7 @@ class ShmovingController(Node):
         self.wall_distance = 250.0
         self.dist_precision = 0.1
         self.phi_precision = 0.1
-        self.max_linear = 2.0
+        self.max_linear = 1.0
         self.min_linear = 0.01
         self.max_angular = 2.0
         self.min_angular = -2.0
@@ -72,7 +74,10 @@ class ShmovingController(Node):
         # topic subscriptions
         self.odometry_subscription = self.create_subscription(Odometry, '/robot_7/odom', self.odom_callback, qos_profile_sensor_data)
         self.ir_subscription = self.create_subscription(IrIntensityVector, '/robot_7/ir_intensity', self.ir_callback, qos_profile_sensor_data)
-        self.lidar_subscription = self.create_subscription()
+        #self.lidar_subscription = self.create_subscription()
+
+        # create service client
+        self.reset_cli = self.create_client(ResetPose, '/robot_7/reset_pose')
 
         # topic publishers        
         self.wheel_speed_publisher = self.create_publisher(Twist, "/robot_7/cmd_vel", 10)
@@ -80,8 +85,19 @@ class ShmovingController(Node):
         # timer
         self.timer = self.create_timer(self.dt, self.state_machine)
 
-    def lidar_callback(self, msg):
-        self.obstacle = msg.obstacle
+        # test variable to delete later
+        self.counter = 0
+
+        self.get_logger().info('Started program statement')
+
+    def lidar_callback(self):
+        self.counter += 1
+        self.get_logger().info(f'Counter: {self.counter}')
+
+        if self.counter <= 1000:
+            self.obstacle = 'right'
+        elif self.counter > 1000:
+            self.obstacle = 'none'
 
     def ir_callback(self, msg):
         self.ir_values = [r.value for r in msg.readings]
@@ -105,24 +121,25 @@ class ShmovingController(Node):
 
         return dist_err, phi_err_correct
     
-    def get_wall_error(self, side):
-        if side == -1:
+    def get_wall_error(self):
+        if self.side == -1:
             current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
-        elif side == 1:
+        elif self.side == 1:
             current_distance = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[3])/4
         return self.wall_distance - current_distance
     
     def check_goal(self):
         dist_err, _ = self.get_pose_error()
-        return dist_err > self.dist_precision
+        return dist_err < self.dist_precision
 
     def check_orientation(self):
         _, phi_err = self.get_pose_error()
-        return abs(phi_err) > self.phi_precision
+        return abs(phi_err) < self.phi_precision
     
     def pid(self, pid_values, error):
         P = pid_values['kp angular'] * error
         I = pid_values['accumulated error'] + pid_values['ki angular'] * error * self.dt
+        I = max(self.min_angular, min(self.max_angular, I))
         D = pid_values['kd angular'] * (error - pid_values['last error']) / self.dt
 
         angular = P + I + D
@@ -132,8 +149,12 @@ class ShmovingController(Node):
         linear = max(self.min_linear, min(self.max_linear, linear))
 
         return linear, angular, I
+
+    def reset_pid(self, pid_values):
+        pid_values['last error'] = 0.0
+        pid_values['accumulated error'] = 0.0
     
-    def send_wheel_commands(self, side=-1):
+    def send_wheel_commands(self):
         msg = Twist()
         
         msg.linear.x = self.linear
@@ -142,91 +163,112 @@ class ShmovingController(Node):
 
         msg.angular.x = 0.0
         msg.angular.y = 0.0
-        msg.angular.z = side * self.angular
+        msg.angular.z = self.angular
 
         self.wheel_speed_publisher.publish(msg)
+
+    def set_wall_side(self):
+        if self.obstacle == 'right':
+            self.side = -1  # right side
+        elif self.obstacle == 'left':
+            self.side = 1   # left side
+        elif self.obstacle == 'front':
+            self.side = -1 * self.last_side
+        
+        self.last_side = self.side
     
     def reset_pose(self):
-        pass
+        reset_req = ResetPose.Request()
+        reset_req.pose = Pose()
+
+        reset_req.pose.position.x = 0.0
+        reset_req.pose.position.y = 0.0
+        reset_req.pose.position.z = 0.0
+
+        self.reset_cli.call_async(reset_req)
 
     def turn_to_goal(self):
-        _, phi_err = self.get_pose_error()
+        self.get_logger().info(f'Turning', throttle_duration_sec=1)
+        self.linear, self.angular = 0.0, -2.0
 
         self.send_wheel_commands()
-
     
     def go_to_goal(self):
+        self.get_logger().info(f'Going to goal', throttle_duration_sec=1)
         _, phi_err = self.get_pose_error()
         self.linear, self.angular, self.gtg_pid['accumulated error'] = self.pid(self.gtg_pid, phi_err)
         self.gtg_pid['last error'] = phi_err
 
         self.send_wheel_commands()
 
-    def follow_wall(self, side):
-        wall_err = self.get_wall_error(side)
-        self.linear, self.angular, self.wf_pid['accumulated error'] = self.pid(self.wf_pid, wall_err)
+    def follow_wall(self):
+        self.get_logger().info(f'Following wall', throttle_duration_sec=1)
+        wall_err = self.get_wall_error()
+        self.linear, angular, self.wf_pid['accumulated error'] = self.pid(self.wf_pid, wall_err)
         self.wf_pid['last error'] = wall_err
 
-        self.send_wheel_commands(side)
+        self.angular = self.side * angular
+        self.send_wheel_commands()
 
     def stop(self):
         self.linear, self.angular = 0.0, 0.0
         self.send_wheel_commands()
 
-        self.destroy_node()
-        rclpy.shutdown()
+        self.get_logger().info('Stopped program statement')
+        raise SystemExit
     
     def state_machine(self):
+        self.lidar_callback()
+
         if self.state == 'reset pose':
             self.reset_pose()
+            self.get_logger().info(f'Goal reached: {self.check_goal()}')
             if self.check_goal():
                 self.state = 'stop'
+                self.get_logger().info(f'State is stop')
             elif not self.check_goal():
-                self.state == 'turn to goal'
+                self.state = 'turn to goal'
+                self.get_logger().info(f'State is turn to goal')
 
-        if self.state == 'turn to goal':
+        elif self.state == 'turn to goal':
             self.turn_to_goal()
             if self.check_orientation():
                 if self.obstacle == 'none':
+                    #reset PID last and accumulated errors when switching to go to goal state
+                    self.reset_pid(self.gtg_pid)
                     self.state = 'go to goal'
-                elif self.obstacle == 'right':
+                elif self.obstacle == 'right' or self.obstacle == 'left' or self.obstacle == 'front':
+                    #reset PID last and accumulated errors when switching to go to goal state
+                    self.reset_pid(self.wf_pid)
+                    self.set_wall_side()
                     self.state = 'follow wall'
-                    side = -1 #right side
-                elif self.obstacle == 'left':
-                    self.state = 'follow wall'
-                    side = 1 #left side
-                elif self.obstacle == 'front':
-                    self.state = 'follow wall'
-                    side = -1 * self.last_side
             elif not self.check_orientation():
                 pass
         
-        if self.state == 'go to goal':
+        elif self.state == 'go to goal':
             self.go_to_goal()
             if self.check_goal():
                 self.state = 'stop'
             elif self.obstacle == 'none':
                 pass
-            elif self.obstacle == 'right':
+            elif self.obstacle == 'right' or self.obstacle == 'left' or self.obstacle == 'front':
+                #reset PID last and accumulated errors when switching to wall follow state
+                self.reset_pid(self.wf_pid)
+                self.set_wall_side()
                 self.state = 'follow wall'
-                side = -1 #right side
-            elif self.obstacle == 'left':
-                self.state = 'follow wall'
-                side = 1 #left side
-            elif self.obstacle == 'front':
-                self.state = 'follow wall'
-                side = -1 * self.last_side
         
-        if self.state == 'follow wall':
-            self.follow_wall(side)
+        elif self.state == 'follow wall':
+            self.follow_wall()
             if self.check_goal():
                 self.state = 'stop'
             elif self.obstacle == 'none':
+                #reset PID last and accumulated errors when switching to go to goal state
+                self.reset_pid(self.gtg_pid)
                 self.state = 'go to goal'
             elif self.obstacle == 'left' or self.obstacle == 'right' or self.obstacle == 'front':
                 pass
         
-        if self.state == 'stop':
+        elif self.state == 'stop':
             self.stop()
 
 def main(args=None):
@@ -238,6 +280,8 @@ def main(args=None):
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass  # Handle Ctrl+C gracefully
+    except SystemExit:
+        pass
     finally:
         if node is not None:
             node.destroy_node()

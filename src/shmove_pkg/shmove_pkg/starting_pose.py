@@ -9,6 +9,7 @@ class StartingPose(Node):
         self.reset_cli = self.create_client(ResetPose, '/robot_7/reset_pose')
 
         self.reset_pose()
+        self.stop()
 
     def reset_pose(self):
         reset_req = ResetPose.Request()
@@ -20,14 +21,26 @@ class StartingPose(Node):
 
         self.reset_cli.call_async(reset_req)
 
+    def stop(self):
+        raise SystemExit
+        #rclpy.shutdown()
 
-def main():
-    rclpy.init()
-    node = StartingPose()
-    rclpy.spin(node)
-   # node.reset_pose()
-    node.destroy_node()
-    rclpy.shutdown()
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = None
+
+    try:
+        node = StartingPose()
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass  # Handle Ctrl+C gracefully
+    except SystemExit:
+        pass
+    finally:
+        if node is not None:
+            node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
