@@ -13,8 +13,8 @@ from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
 from sensor_msgs.msg import LaserScan
 
-X = 1.576
-Y = -3.942
+X = 1.05
+Y = -4.04
 
 class ShmovingController(Node):
     def __init__(self, x_goal=X, y_goal=Y):

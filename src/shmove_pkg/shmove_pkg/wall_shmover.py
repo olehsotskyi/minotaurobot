@@ -12,13 +12,13 @@ from sensor_msgs.msg import LaserScan
 class ControlNode(Node):
     def __init__(self):
         super().__init__('control_node')
-        self.desired_distance_right = 250  # Desired distance from the right wall in meters
+        self.desired_distance_right = 350  # Desired distance from the right wall in meters
         # Change this to match your vehicle
-        self.kp_steering = 0.011
-        self.ki_steering = 0.00015
-        self.kd_steering = 0.0001
-        self.kp_throttle = 0.002
-        self.max_throttle = 1.0
+        self.kp_steering = 0.005
+        self.ki_steering = 0.0
+        self.kd_steering = 0.0
+        self.kp_throttle = 0.001
+        self.max_throttle = 0.4
 
         self.last_error = 0.0
         self.integral = 0.0
@@ -41,7 +41,7 @@ class ControlNode(Node):
 
         self.lidar_subscriber = self.create_subscription(String, '/robot_7/obstacle', self.lidar_callback, qos_profile_sensor_data)
 
-        self.current_distance = 260
+        self.current_distance = 360
         #self.current_distance = float('inf')
 
         self.get_logger().info('Control Node has been started.')
@@ -65,7 +65,7 @@ class ControlNode(Node):
 
         # Steering control
         steering_control = self.kp_steering * error + self.ki_steering * self.integral + self.kd_steering * derivative
-        steering_control = max(-1.0, min(2.0, steering_control))
+        steering_control = max(-1.0, min(1.0, steering_control))
 
         # steering_msg = Float32()
         # steering_msg.data = steering_control

@@ -13,8 +13,8 @@ from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
 from sensor_msgs.msg import LaserScan
 
-X = 1.576
-Y = -3.942
+X = 1.05
+Y = -4.04
 
 class ShmovingController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
@@ -75,6 +75,7 @@ class ShmovingController(Node):
         # topic subscriptions
         self.odometry_subscription = self.create_subscription(Odometry, '/robot_7/odom', self.odom_callback, qos_profile_sensor_data)
         self.ir_subscription = self.create_subscription(IrIntensityVector, '/robot_7/ir_intensity', self.ir_callback, qos_profile_sensor_data)
+        self.lidar_subscriber = self.create_subscription(String, '/robot_7/obstacle', self.lidar_callback, qos_profile_sensor_data)
 
         # create service client
         self.reset_cli = self.create_client(ResetPose, '/robot_7/reset_pose')
@@ -85,20 +86,7 @@ class ShmovingController(Node):
         # timer
         self.timer = self.create_timer(self.dt, self.state_machine)
 
-        # test variable to delete later
-        self.counter = 0
-        self.lidar_subscriber = self.create_subscription(String, '/robot_7/obstacle', self.lidar_callback, qos_profile_sensor_data)
-
         self.get_logger().info('Started program statement')
-
-    # def lidar_callback(self):
-    #     self.counter += 1
-    #     self.get_logger().info(f'Counter: {self.counter}')
-
-    #     if self.counter <= 1000:
-    #         self.obstacle = 'right'
-    #     elif self.counter > 1000:
-    #         self.obstacle = 'none'
 
     def lidar_callback(self, msg):
         self.obstacle = msg.data
@@ -223,8 +211,6 @@ class ShmovingController(Node):
         raise SystemExit
     
     def state_machine(self):
-        #self.lidar_callback()
-
         if self.state == 'reset pose':
             self.reset_pose()
             self.get_logger().info(f'Goal reached: {self.check_goal()}')
