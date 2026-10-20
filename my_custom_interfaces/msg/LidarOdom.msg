@@ -2,5 +2,6 @@ string left
 string right
 string equal
 string far
-string near 
+string front
+string none
 
