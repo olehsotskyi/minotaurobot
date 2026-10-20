@@ -6,6 +6,7 @@ from rclpy.qos import qos_profile_sensor_data
 from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import IrIntensityVector
 from std_msgs.msg import Float32
+from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
 
 class ControlNode(Node):
@@ -38,6 +39,8 @@ class ControlNode(Node):
         #     self.lidar_callback,
         #     qos_profile_sensor_data)
 
+        self.lidar_subscriber = self.create_subscription(String, '/robot_7/obstacle', self.lidar_callback, qos_profile_sensor_data)
+
         self.current_distance = 260
         #self.current_distance = float('inf')
 
@@ -47,15 +50,15 @@ class ControlNode(Node):
         self.ir_values = [r.value for r in msg.readings]
         self.current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
 
-    # def lidar_callback(self, msg):
-    #     self.current_distance = msg.data
+    def lidar_callback(self, msg):
+        self.get_logger().info(f'Obstacle: {msg.data}', throttle_duration_sec=1)
     
     def control_loop(self):
         # if self.current_distance == float('inf'):
         #     return
 
         error = self.desired_distance_right - self.current_distance
-        print(error)
+        #print(error)
         self.integral += error * 0.01
         derivative = (error - self.last_error) / 0.01
         self.last_error = error

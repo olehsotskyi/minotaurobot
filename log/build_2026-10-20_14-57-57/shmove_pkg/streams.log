@@ -1,0 +1,22 @@
+[4.268s] Invoking command in '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg': PYTHONPATH=/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build --no-deps symlink_data
+[5.987s] running develop
+[7.229s] running egg_info
+[7.230s] creating shmove_pkg.egg-info
+[7.328s] writing shmove_pkg.egg-info/PKG-INFO
+[7.329s] writing dependency_links to shmove_pkg.egg-info/dependency_links.txt
+[7.330s] writing requirements to shmove_pkg.egg-info/requires.txt
+[7.331s] writing top-level names to shmove_pkg.egg-info/top_level.txt
+[7.332s] writing manifest file 'shmove_pkg.egg-info/SOURCES.txt'
+[7.543s] reading manifest file 'shmove_pkg.egg-info/SOURCES.txt'
+[7.545s] writing manifest file 'shmove_pkg.egg-info/SOURCES.txt'
+[7.650s] running build_ext
+[7.651s] Creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove-pkg.egg-link (link to .)
+[7.653s] 
+[7.654s] Installed /home/robot/minotaurobot_oleh_ws/build/shmove_pkg
+[7.654s] running symlink_data
+[7.655s] creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index
+[7.655s] creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index/resource_index
+[7.656s] creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index/resource_index/packages
+[7.656s] symbolically linking /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/resource/shmove_pkg -> /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index/resource_index/packages
+[7.657s] symbolically linking /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/package.xml -> /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg
+[7.819s] Invoked command in '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg' returned '0': PYTHONPATH=/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build --no-deps symlink_data
