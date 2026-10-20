@@ -11,7 +11,6 @@ from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Pose
 from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
-from sensor_msgs.msg import LaserScan
 
 X = 1.05
 Y = -4.04
