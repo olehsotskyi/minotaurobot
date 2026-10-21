@@ -9,16 +9,19 @@ from std_msgs.msg import Float32
 from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
 
+# class PID:
+#     def __init__(self, kp)
+
 class ControlNode(Node):
     def __init__(self):
         super().__init__('control_node')
-        self.desired_distance_right = 350  # Desired distance from the right wall in meters
+        self.desired_distance_right = 150  # Desired distance from the right wall in meters
         # Change this to match your vehicle
-        self.kp_steering = 0.005
+        self.kp_steering = 0.00665
         self.ki_steering = 0.0
-        self.kd_steering = 0.0
-        self.kp_throttle = 0.001
-        self.max_throttle = 0.4
+        self.kd_steering = 0.0015
+        self.kp_throttle = 0.0004
+        self.max_throttle = 0.3
 
         self.last_error = 0.0
         self.integral = 0.0
@@ -41,14 +44,14 @@ class ControlNode(Node):
 
         self.lidar_subscriber = self.create_subscription(String, '/robot_7/obstacle', self.lidar_callback, qos_profile_sensor_data)
 
-        self.current_distance = 360
+        self.current_distance = 160
         #self.current_distance = float('inf')
 
         self.get_logger().info('Control Node has been started.')
 
     def ir_values(self, msg):
         self.ir_values = [r.value for r in msg.readings]
-        self.current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
+        self.current_distance = (3*self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + 3*self.ir_values[3])/8
 
     def lidar_callback(self, msg):
         self.get_logger().info(f'Obstacle: {msg.data}', throttle_duration_sec=1)
@@ -65,7 +68,7 @@ class ControlNode(Node):
 
         # Steering control
         steering_control = self.kp_steering * error + self.ki_steering * self.integral + self.kd_steering * derivative
-        steering_control = max(-1.0, min(1.0, steering_control))
+        steering_control = max(-1.9, min(1.9, steering_control))
 
         # steering_msg = Float32()
         # steering_msg.data = steering_control

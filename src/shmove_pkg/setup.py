@@ -24,11 +24,13 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'ir_sensors = shmove_pkg.ir_sensors:main',
             'go_to_goal = shmove_pkg.go_to_goal:main',
             'shmove_to_goal = shmove_pkg.shmove_to_goal:main',
             'wall_follower = shmove_pkg.wall_follower:main',
             'mover = shmove_pkg.mover:main',
             'shmoving_algorithm_1 = shmove_pkg.shmoving_algorithm_1:main',
+            'shmoving_algorithm_2 = shmove_pkg.shmoving_algorithm_2:main',
             'wall_shmover = shmove_pkg.wall_shmover:main',
             'starting_pose = shmove_pkg.starting_pose:main',
             'test = shmove_pkg.test:main',

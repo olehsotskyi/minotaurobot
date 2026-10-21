@@ -1,8 +1,10 @@
 [console_scripts]
 go_to_goal = shmove_pkg.go_to_goal:main
+ir_sensors = shmove_pkg.ir_sensors:main
 mover = shmove_pkg.mover:main
 shmove_to_goal = shmove_pkg.shmove_to_goal:main
 shmoving_algorithm_1 = shmove_pkg.shmoving_algorithm_1:main
+shmoving_algorithm_2 = shmove_pkg.shmoving_algorithm_2:main
 starting_pose = shmove_pkg.starting_pose:main
 test = shmove_pkg.test:main
 test2 = shmove_pkg.test2:main

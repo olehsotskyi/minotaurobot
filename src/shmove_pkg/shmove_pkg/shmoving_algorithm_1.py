@@ -13,8 +13,8 @@ from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
 from sensor_msgs.msg import LaserScan
 
-X = 1.05
-Y = -4.04
+X = 2.0
+Y = 0.0
 
 class ShmovingController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
@@ -132,7 +132,7 @@ class ShmovingController(Node):
     def pid(self, pid_values, error):
         P = pid_values['kp angular'] * error
         I = pid_values['accumulated error'] + pid_values['ki angular'] * error * self.dt
-        I = max(self.min_angular, min(self.max_angular, I))
+        #I = max(self.min_angular, min(self.max_angular, I))
         D = pid_values['kd angular'] * (error - pid_values['last error']) / self.dt
 
         angular = P + I + D
