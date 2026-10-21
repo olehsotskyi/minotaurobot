@@ -4,8 +4,10 @@ from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 from rclpy.qos import qos_profile_sensor_data
 from my_custom_interfaces.msg import LidarOdom
+from std_msgs.msg import String
 import math
-
+import subprocess
+import time
 
 class Laser(Node):
 
@@ -16,8 +18,8 @@ class Laser(Node):
         
         self.last_lidar_print_time = None
         self.last_odom_print_time = None
-        self.goal_x = 0.159
-        self.goal_y = 1.705
+        self.goal_x = 2.35
+        self.goal_y = -3.96
         self.alpha = None
         self.beta = None 
         self.distance_to_goal = None
@@ -48,7 +50,7 @@ class Laser(Node):
             qos_profile_sensor_data
         )
         self.publisher_ = self.create_publisher(
-            LidarOdom, '/robot/processed_status', 10)
+            String, '/robot_7/obstacle', 10)
 
     def reset_scan_state(self):
         self.front = None
@@ -88,7 +90,7 @@ class Laser(Node):
                 angle_diff = math.atan2(math.sin(angle_diff), math.cos(angle_diff))
 
                 # Zone 1: near obstacles
-                if 0.18 <= distance <= 0.60 and abs(angle_diff) <= math.radians(22) and distance < self.distance_to_goal:
+                if 0.18 <= distance <= 0.30 and abs(angle_diff) <= math.radians(45) and distance < self.distance_to_goal:
                     clearance = distance - 0.18
                     self.near_obstacles.append(clearance)
                     if angle_diff > 0:
@@ -97,12 +99,11 @@ class Laser(Node):
                         self.right_distances.append(clearance)
 
                 # Zone 2: further obstacles
-                elif 0.60 < distance <= 1.00 and abs(angle_diff) <= math.radians(30):
+                elif 0.30 < distance <= 0.60 and abs(angle_diff) <= math.radians(30):
                     clearance = distance - 0.18
                     self.further_obstacles.append(clearance)
 
         if self.near_obstacles:
-            self.front = "front"
             closest_right = min(self.right_distances) if self.right_distances else float('inf')
             closest_left = min(self.left_distances) if self.left_distances else float('inf')
 
@@ -185,32 +186,46 @@ class Laser(Node):
         return alpha, beta, x, y, distance
 
     def lidar_odom_publishers(self):
+        print("I am runnung this")
+        if self.left is not None:
+            direction = 'left'
+        elif self.right is not None:
+            direction = 'right'
+        elif self.equal is not None:
+            direction = 'equal'
+        elif self.far is not None:
+            direction = 'far'
+        else:
+            direction = 'none'
 
-        if self.left is not None or self.right is not None or self.equal is not None:
-            # Create an instance of your custom message
-            out_msg = LidarOdom()
+        out_msg = String()
+        out_msg.data = direction
+        self.publisher_.publish(out_msg)
+        self.get_logger().info(f'Published -> {out_msg.data}')
 
-            # Assign values to the string fields in your custom message
-            out_msg.left = str(self.left)
-            out_msg.right = str(self.right)
-            out_msg.equal = str(self.equal)
-            out_msg.far = str(self.far)
-            out_msg.front = str(self.front)
-            out_msg.none = str(self.none)
+def start_rplidar():
+    cmd = [
+        'ros2', 'run', 'rplidar_ros', 'rplidar_composition',
+        '--ros-args',
+        '-p', 'serial_port:=/dev/ttyUSB0',
+        '-p', 'serial_baudrate:=115200',   # A1/A2M8; 256000 for A2M12/A3, 460800 for C1
+        '-p', 'frame_id:=laser',
+        '-p', 'angle_compensate:=true',
+    ]
+    proc = subprocess.Popen(cmd)
+    time.sleep(2.0)   # give the lidar time to spin up
+    return proc
 
-            # Publish using the actual publisher object
-            self.publisher_.publish(out_msg)
-
-            self.get_logger().info(
-                f'Published -> Left: {out_msg.left}, Right: {out_msg.right}, Equal: {out_msg.equal}, Far: {out_msg.far}, Front: {out_msg.front}, none: {out_msg.none}'
-            )
 
 def main(args=None):
+    lidar_proc = start_rplidar()
     rclpy.init(args=args)
     laser = Laser()
     rclpy.spin(laser)
     laser.destroy_node()
     rclpy.shutdown()
+    lidar_proc.terminate()   # stop the lidar when this node stops
+    lidar_proc.wait()
 
 
 if __name__ == '__main__':
