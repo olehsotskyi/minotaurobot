@@ -223,7 +223,7 @@ class ShmovingController(Node):
         elif self.state == 'turn to goal':
             self.turn_to_goal()
             if self.check_orientation():
-                if self.obstacle == 'none':
+                if self.obstacle == 'none' or self.obstacle == 'far':
                     #reset PID last and accumulated errors when switching to go to goal state
                     self.reset_pid(self.gtg_pid)
                     self.state = 'go to goal'
@@ -239,7 +239,7 @@ class ShmovingController(Node):
             self.go_to_goal()
             if self.check_goal():
                 self.state = 'stop'
-            elif self.obstacle == 'none':
+            elif self.obstacle == 'none' or self.obstacle == 'far':
                 pass
             elif self.obstacle == 'right' or self.obstacle == 'left' or self.obstacle == 'front':
                 #reset PID last and accumulated errors when switching to wall follow state
@@ -251,7 +251,7 @@ class ShmovingController(Node):
             self.follow_wall()
             if self.check_goal():
                 self.state = 'stop'
-            elif self.obstacle == 'none':
+            elif self.obstacle == 'none' or self.obstacle == 'far':
                 #reset PID last and accumulated errors when switching to go to goal state
                 self.reset_pid(self.gtg_pid)
                 self.state = 'go to goal'
