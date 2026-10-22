@@ -27,6 +27,12 @@ setup(
             'lidar_subscriber = lidar_reader.lidar_subscriber:main',
             'laser = lidar_reader.Laser:main',
             'laser_v2 = lidar_reader.Laser_v2:main',
+            'ir_sensors = lidar_reader.ir_sensors:main',
+            'shmove_to_goal = lidar_reader.shmove_to_goal:main',
+            'wall_follower = lidar_reader.wall_follower:main',
+            'algorithm_extra_states = lidar_reader.algorithm_extra_states:main',
+            'wall_shmover = lidar_reader.wall_shmover:main',
+            'starting_pose = lidar_reader.starting_pose:main',
         ],
     },  
 )

@@ -18,8 +18,8 @@ class Laser(Node):
         
         self.last_lidar_print_time = None
         self.last_odom_print_time = None
-        self.goal_x = 2.35
-        self.goal_y = -3.96
+        self.goal_x = 2.28
+        self.goal_y = -3.82
         self.alpha = None
         self.beta = None 
         self.distance_to_goal = None
@@ -115,7 +115,7 @@ class Laser(Node):
                 self.left = 'left'
             else:
                 print(f'Goal obstacles are at equal distance on both sides: {closest_left:.3f} m')
-                self.equal = 'equal'
+                self.front = 'front'
 
         if self.further_obstacles:
             self.far = "far"
@@ -189,19 +189,24 @@ class Laser(Node):
         print("I am runnung this")
         if self.left is not None:
             direction = 'left'
+
         elif self.right is not None:
             direction = 'right'
-        elif self.equal is not None:
-            direction = 'equal'
+          
+        elif self.front is not None:
+            direction = 'front'
+          
         elif self.far is not None:
             direction = 'far'
         else:
             direction = 'none'
+            distance = float('inf')
 
         out_msg = String()
         out_msg.data = direction
         self.publisher_.publish(out_msg)
         self.get_logger().info(f'Published -> {out_msg.data}')
+
 
 def start_rplidar():
     cmd = [
