@@ -11,10 +11,53 @@ from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Pose
 from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
-from sensor_msgs.msg import LaserScan
 
 X = 2.0
 Y = 0.0
+
+class PID:
+    def __init__(self, kp, ki, kd, max, min, desired_value):
+        self.kp = kp
+        self.ki = ki
+        self.kd = kd
+        self.max = max
+        self.min = min
+        self.desired_value = desired_value
+        self.accumulated_error = 0.0
+        self.last_error = 0.0
+
+    def update(self, current_value, dt):
+        error = self.desired_value - current_value
+        self.accumulated_error += error * dt
+        d_error = (error - self.last_error) / dt
+        output = self.kp * error + self.ki * self.accumulated_error + self.kd * d_error
+
+        output = max(self.min, min(self.max, output))
+
+        self.last_error = error
+        return output
+
+    def reset(self):
+        self.accumulated_error = 0.0
+        self.last_error = 0.0
+
+class P:
+    def __init__(self, kp, max, min, desired_value):
+        self.kp = kp
+        self.max = max
+        self.min = min
+        self.desired_value = desired_value
+
+    def update(self, current_value, reversed=False):
+        error = self.desired_value - current_value
+
+        if reversed:
+            output = self.max - self.kp * abs(error)
+        else:
+            output = self.kp * error
+
+        output = max(self.min, min(self.max, output))
+        return output
 
 class ShmovingController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
@@ -40,37 +83,24 @@ class ShmovingController(Node):
         # additional control attributes
         self.last_side = 1
         self.side = -1
+        self.maneuver_phi = 0.0
         self.dt = 0.01
         self.state = 'reset pose'
 
-        # wall follower PID parameters
-        self.wf_pid = {
-            'kp linear' : 0.0004,
-            'kp angular' : 0.00665,
-            'ki angular' : 0.0,
-            'kd angular' : 0.0015,
-            'last error' : 0.0,
-            'accumulated error' : 0.0
-        }
+        self.wf_angular_pid = PID(kp=0.00668, ki=0.0, kd=0.0016, max=1.9, min=-1.9, desired_value=150)
+        self.wf_linear_p = P(kp=0.0004, max=0.3, min=0.01, desired_value=150)
 
-        # go to goal PID parameters
-        self.gtg_pid = {
-            'kp linear' : 1.5,
-            'ki linear' : 0.0,
-            'kd linear' : 0.0,
-            'kp angular' : 0.0,
-            'last error' : 0.0,
-            'accumulated error' : 0.0
-        }
+        self.gtg_angular_pid = PID(kp=10.0, ki=0.1, kd=0.1, max=2.0, min=-2.0, desired_value=0.0)
+        self.gtg_linear_p = P(kp=1.0, max=1.0, min=0.01, desired_value=0.0)
+
+        self.ttg_angular_p = P(kp=4.0, max=2.0, min=-2.0, desired_value=0.0)
+
+        self.ao_linear_p = P(kp=0.02, max=0.1, min=0.01, desired_value=0.0)
 
         # thresholds
-        self.wall_distance = 150.0
         self.dist_precision = 0.01
-        self.phi_precision = 0.1
-        self.max_linear = 0.3
-        self.min_linear = 0.01
-        self.max_angular = 1.9
-        self.min_angular = -1.9
+        self.phi_precision = 0.01
+        self.ir_threshold = 200.0
 
         # topic subscriptions
         self.odometry_subscription = self.create_subscription(Odometry, '/robot_7/odom', self.odom_callback, qos_profile_sensor_data)
@@ -102,6 +132,13 @@ class ShmovingController(Node):
 
         self.phi = np.arctan2(2 * (q.w * q.z + q.x * q.y), 1 - 2 * (q.y ** 2 + q.z ** 2))
     
+    def get_wall_distance(self):
+        if self.side == -1:
+            current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
+        elif self.side == 1:
+            current_distance = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[3])/4
+        return current_distance
+    
     def get_pose_error(self):
         x_err = self.x_goal - self.x
         y_err = self.y_goal - self.y
@@ -113,13 +150,16 @@ class ShmovingController(Node):
         phi_err_correct = np.arctan2(np.sin(phi_err), np.cos(phi_err))
 
         return dist_err, phi_err_correct
+
+    def get_maneuver_error(self):
+        phi_maneuver = self.maneuver_phi - (self.side * np.pi / 2.0)
+        phi_err = phi_maneuver - self.phi
+
+        phi_err_correct = np.arctan2(np.sin(phi_err), np.cos(phi_err))
+        return phi_err_correct
     
-    def get_wall_error(self):
-        if self.side == -1:
-            current_distance = (3*self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + 3*self.ir_values[3])/8
-        elif self.side == 1:
-            current_distance = (3*self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + 3*self.ir_values[3])/8
-        return self.wall_distance - current_distance
+    def check_reset(self):
+        pass
     
     def check_goal(self):
         dist_err, _ = self.get_pose_error()
@@ -128,39 +168,15 @@ class ShmovingController(Node):
     def check_orientation(self):
         _, phi_err = self.get_pose_error()
         return abs(phi_err) < self.phi_precision
-    
-    def wf_controller(self, pid_values, error):
-        P = pid_values['kp angular'] * error
-        I = pid_values['accumulated error'] + pid_values['ki angular'] * error * self.dt
-        #I = max(self.min_angular, min(self.max_angular, I))
-        D = pid_values['kd angular'] * (error - pid_values['last error']) / self.dt
 
-        angular = P + I + D
-        angular = max(self.min_angular, min(self.max_angular, angular))
-
-        linear = self.max_linear - (pid_values['kp linear'] * abs(error))
-        linear = max(self.min_linear, min(self.max_linear, linear))
-
-        return linear, angular, I
-    
-    def gtg_controller(self, pid_values, error):
-        P = pid_values['kp linear'] * error
-        I = pid_values['accumulated error'] + pid_values['ki linear'] * error * self.dt
-        #I = max(self.min_angular, min(self.max_angular, I))
-        D = pid_values['kd linear'] * (error - pid_values['last error']) / self.dt
-
-        linear = P + I + D
-        linear = max(self.min_linear, min(self.max_linear, linear))
-
-        # linear = self.max_linear - (pid_values['kp linear'] * abs(error))
-        # linear = max(self.min_linear, min(self.max_linear, linear))
-        angular = 0.0
-
-        return linear, angular, I
-
-    def reset_pid(self, pid_values):
-        pid_values['last error'] = 0.0
-        pid_values['accumulated error'] = 0.0
+    def check_wall(self):
+        #current_distance = self.get_wall_distance()
+        #self.get_logger().info(f'Current distance: {current_distance}')
+        #self.get_logger().info(f'IR sensors: {self.ir_values}')
+        if self.side == -1:
+            return self.ir_values[5] > 200
+        elif self.side == 1:
+            return self.ir_values[1] > 350
     
     def send_wheel_commands(self):
         msg = Twist()
@@ -184,6 +200,7 @@ class ShmovingController(Node):
             self.side = -1 * self.last_side
         
         self.last_side = self.side
+        self.maneuver_phi = self.phi
     
     def reset_pose(self):
         reset_req = ResetPose.Request()
@@ -197,23 +214,49 @@ class ShmovingController(Node):
 
     def turn_to_goal(self):
         self.get_logger().info(f'Turning', throttle_duration_sec=1)
-        self.linear, self.angular = 0.0, -2.0
+        _, phi_err = self.get_pose_error()
+
+        self.linear = 0.0
+        self.angular = self.ttg_angular_p.update(-phi_err)
 
         self.send_wheel_commands()
     
     def go_to_goal(self):
         self.get_logger().info(f'Going to goal', throttle_duration_sec=1)
-        dist_err, _ = self.get_pose_error()
-        self.linear, self.angular, self.gtg_pid['accumulated error'] = self.gtg_controller(self.gtg_pid, dist_err)
-        self.gtg_pid['last error'] = dist_err
+        _, phi_err = self.get_pose_error()
+        
+        #pass -phi_err so error = desired_value (0.0) - (-phi_err) = phi_err
+        self.linear = self.gtg_linear_p.update(-phi_err, reversed=True)
+        self.angular = self.gtg_angular_pid.update(-phi_err, self.dt)
+
+        self.send_wheel_commands()
+
+    def approach_obstacle(self):
+        self.get_logger().info(f'Approaching obstacle', throttle_duration_sec=1)
+        _, phi_err = self.get_pose_error()
+
+        #pass -phi_err so error = desired_value (0.0) - (-phi_err) = phi_err
+        self.linear = self.ao_linear_p.update(-phi_err, reversed=True)
+        self.angular = self.gtg_angular_pid.update(-phi_err, self.dt)
+
+        self.send_wheel_commands()
+
+    def maneuver(self):
+        self.get_logger().info(f'Maneuvering', throttle_duration_sec=1)
+        phi_err = self.get_maneuver_error()
+
+        #pass -phi_err so error = desired_value (0.0) - (-phi_err) = phi_err
+        self.linear = self.ao_linear_p.update(-phi_err, reversed=True)
+        self.angular = self.gtg_angular_pid.update(-phi_err, self.dt)
 
         self.send_wheel_commands()
 
     def follow_wall(self):
         self.get_logger().info(f'Following wall', throttle_duration_sec=1)
-        wall_err = self.get_wall_error()
-        self.linear, angular, self.wf_pid['accumulated error'] = self.wf_controller(self.wf_pid, wall_err)
-        self.wf_pid['last error'] = wall_err
+        wall_distance = self.get_wall_distance()
+        
+        self.linear = self.wf_linear_p.update(wall_distance, reversed=True)
+        angular = self.wf_angular_pid.update(wall_distance, self.dt)
 
         self.angular = self.side * angular
         self.send_wheel_commands()
@@ -239,13 +282,27 @@ class ShmovingController(Node):
         elif self.state == 'turn to goal':
             self.turn_to_goal()
             if self.check_orientation():
-                if self.obstacle == 'none' or self.obstacle == 'far':
+                if self.obstacle == 'none':
                     #reset PID last and accumulated errors when switching to go to goal state
-                    self.reset_pid(self.gtg_pid)
+                    self.gtg_angular_pid.reset()
                     self.state = 'go to goal'
-                elif self.obstacle == 'right' or self.obstacle == 'left' or self.obstacle == 'front':
+                elif self.obstacle == 'far':
                     #reset PID last and accumulated errors when switching to go to goal state
-                    self.reset_pid(self.wf_pid)
+                    self.gtg_angular_pid.reset()
+                    self.state = 'approach obstacle'
+                elif self.obstacle == 'right' or self.obstacle == 'left':
+                    self.set_wall_side()
+                    if self.check_wall():
+                        #reset PID last and accumulated errors when switching to go to goal state
+                        self.wf_angular_pid.reset()
+                        self.state = 'follow wall'
+                    else:
+                        #reset PID last and accumulated errors when switching to go to goal state
+                        self.gtg_angular_pid.reset()
+                        self.state = 'maneuver'
+                elif self.obstacle == 'front':
+                    #reset PID last and accumulated errors when switching to go to goal state
+                    self.wf_angular_pid.reset()
                     self.set_wall_side()
                     self.state = 'follow wall'
             elif not self.check_orientation():
@@ -255,22 +312,75 @@ class ShmovingController(Node):
             self.go_to_goal()
             if self.check_goal():
                 self.state = 'stop'
-            elif self.obstacle == 'none' or self.obstacle == 'far':
+            elif self.obstacle == 'none':
                 pass
-            elif self.obstacle == 'right' or self.obstacle == 'left' or self.obstacle == 'front':
-                #reset PID last and accumulated errors when switching to wall follow state
-                self.reset_pid(self.wf_pid)
+            elif self.obstacle == 'far':
+                self.state = 'approach obstacle'
+            elif self.obstacle == 'right' or self.obstacle == 'left':
+                self.set_wall_side()
+                if self.check_wall():
+                    #reset PID last and accumulated errors when switching to go to goal state
+                    self.wf_angular_pid.reset()
+                    self.state = 'follow wall'
+                else:
+                    #reset PID last and accumulated errors when switching to go to goal state
+                    self.gtg_angular_pid.reset()
+                    self.state = 'maneuver'
+            elif self.obstacle == 'front':
+                #reset PID last and accumulated errors when switching to go to goal state
+                self.wf_angular_pid.reset()
                 self.set_wall_side()
                 self.state = 'follow wall'
+
+        elif self.state == 'approach obstacle':
+            self.approach_obstacle()
+            if self.check_goal():
+                self.state = 'stop'
+            elif self.obstacle == 'none':
+                self.state = 'go to goal'
+            elif self.obstacle == 'far':
+                pass
+            elif self.obstacle == 'right' or self.obstacle == 'left':
+                self.set_wall_side()
+                if self.check_wall():
+                    self.wf_angular_pid.reset()
+                    self.state = 'follow wall'
+                else:
+                    self.gtg_angular_pid.reset()
+                    self.state = 'maneuver'
+            elif self.obstacle == 'front':
+                self.wf_angular_pid.reset()
+                self.set_wall_side()
+                self.state = 'follow wall'
+
+        elif self.state == 'maneuver':
+            self.maneuver()
+            if self.check_goal():
+                self.state = 'stop'
+            elif self.check_wall():
+                self.wf_angular_pid.reset()
+                self.state = 'follow wall'
+            elif self.obstacle == 'front':
+                self.wf_angular_pid.reset()
+                self.state = 'follow wall'
+            elif self.obstacle == 'none':
+                self.gtg_angular_pid.reset()
+                self.state = 'go to goal'
+            elif self.obstacle == 'far':
+                self.gtg_angular_pid.reset()
+                self.state = 'approach obstacle'
         
         elif self.state == 'follow wall':
             self.follow_wall()
             if self.check_goal():
                 self.state = 'stop'
-            elif self.obstacle == 'none' or self.obstacle == 'far':
+            elif self.obstacle == 'none':
                 #reset PID last and accumulated errors when switching to go to goal state
-                #self.reset_pid(self.gtg_pid)
-                self.state = 'turn to goal'
+                self.gtg_angular_pid.reset()
+                self.state = 'go to goal'
+            elif self.obstacle == 'far':
+                self.gtg_angular_pid.reset()
+                self.state = 'approach obstacle'
             elif self.obstacle == 'left' or self.obstacle == 'right' or self.obstacle == 'front':
                 pass
         

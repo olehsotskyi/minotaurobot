@@ -12,7 +12,7 @@ from geometry_msgs.msg import Pose
 from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
 
-X = 2.0
+X = 1.0
 Y = 0.0
 
 class PID:
@@ -87,20 +87,20 @@ class ShmovingController(Node):
         self.dt = 0.01
         self.state = 'reset pose'
 
-        self.wf_angular_pid = PID(kp=0.011, ki=0.00015, kd=0.0001, max=2.0, min=-2.0, desired_value=250)
-        self.wf_linear_p = P(kp=0.002, max=1.0, min=0.01, desired_value=250)
+        self.wf_angular_pid = PID(kp=0.00668, ki=0.0, kd=0.0016, max=1.9, min=-1.9, desired_value=150)
+        self.wf_linear_p = P(kp=0.0004, max=0.3, min=0.01, desired_value=150)
 
-        self.gtg_angular_pid = PID(kp=10.0, ki=0.1, kd=0.1, max=2.0, min=-2.0, desired_value=0.0)
-        self.gtg_linear_p = P(kp=1.0, max=1.0, min=0.01, desired_value=0.0)
+        self.gtg_angular_pid = PID(kp=1.5, ki=0.0, kd=0.15, max=1.9, min=-1.9, desired_value=0.0)
+        self.gtg_linear_p = P(kp=1.0, max=0.3, min=0.01, desired_value=0.0)
 
-        self.ttg_angular_p = P(kp=4.0, max=2.0, min=-2.0, desired_value=0.0)
+        self.ttg_angular_p = P(kp=1.5, max=1.9, min=-1.9, desired_value=0.0)
 
-        self.ao_linear_p = P(kp=0.5, max=0.25, min=0.01, desired_value=0.0)
+        self.ao_linear_p = P(kp=1.5, max=0.1, min=0.01, desired_value=0.0)
 
         # thresholds
         self.dist_precision = 0.01
         self.phi_precision = 0.01
-        self.ir_threshold = 50.0
+        self.ir_threshold = 200.0
 
         # topic subscriptions
         self.odometry_subscription = self.create_subscription(Odometry, '/robot_7/odom', self.odom_callback, qos_profile_sensor_data)
@@ -134,9 +134,9 @@ class ShmovingController(Node):
     
     def get_wall_distance(self):
         if self.side == -1:
-            current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
+            current_distance = (3*self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + 3*self.ir_values[3])/8
         elif self.side == 1:
-            current_distance = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[3])/4
+            current_distance = (3*self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + 3*self.ir_values[3])/8
         return current_distance
     
     def get_pose_error(self):
@@ -170,8 +170,16 @@ class ShmovingController(Node):
         return abs(phi_err) < self.phi_precision
 
     def check_wall(self):
-        current_distance = self.get_wall_distance()
-        return current_distance > self.ir_threshold
+        #current_distance = self.get_wall_distance()
+        #self.get_logger().info(f'Current distance: {current_distance}')
+        #self.get_logger().info(f'IR sensors: {self.ir_values}')
+        if self.side == -1: # wall right
+            if all(value > 150 for value in self.ir_values[3:5]) and all(value < 60 for value in self.ir_values[:3]) and all(value < 60 for value in self.ir_values[5:]):
+                low = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[5] + self.ir_values[6])/5
+                high = (self.ir_values[3] + self.ir_values[4])/2
+                return low < 40 and high > 300  
+        elif self.side == 1: # wall left
+            return self.ir_values[1] > 350
     
     def send_wheel_commands(self):
         msg = Twist()

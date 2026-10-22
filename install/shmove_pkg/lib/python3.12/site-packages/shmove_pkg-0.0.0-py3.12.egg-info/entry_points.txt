@@ -1,10 +1,11 @@
 [console_scripts]
+algorithm_classes = shmove_pkg.algorithm_classes:main
+algorithm_extra_states = shmove_pkg.algorithm_extra_states:main
+algorithm_no_classes = shmove_pkg.algorithm_no_classes:main
 go_to_goal = shmove_pkg.go_to_goal:main
 ir_sensors = shmove_pkg.ir_sensors:main
 mover = shmove_pkg.mover:main
 shmove_to_goal = shmove_pkg.shmove_to_goal:main
-shmoving_algorithm_1 = shmove_pkg.shmoving_algorithm_1:main
-shmoving_algorithm_2 = shmove_pkg.shmoving_algorithm_2:main
 starting_pose = shmove_pkg.starting_pose:main
 test = shmove_pkg.test:main
 test2 = shmove_pkg.test2:main

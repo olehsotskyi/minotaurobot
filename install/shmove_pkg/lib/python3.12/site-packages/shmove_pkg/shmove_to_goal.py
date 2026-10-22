@@ -10,8 +10,11 @@ from irobot_create_msgs.msg import IrIntensityVector
 from std_msgs.msg import Float32
 from sensor_msgs.msg import LaserScan
 
-X = 2.0
-Y = 0.0
+# X = 1.07
+# Y = 0.0
+
+X = 0.0
+Y = 1.07
 
 class NavigationController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
@@ -27,10 +30,10 @@ class NavigationController(Node):
 
         self.kp_steering = 1.5
         self.ki_steering = 0.0
-        self.kd_steering = 0.0
+        self.kd_steering = 0.15
 
         self.kp_throttle = 1.0
-        self.max_throttle = 1.0
+        self.max_throttle = 0.15
 
         self.dt = 0.01
         self.last_error = 0.0
@@ -70,16 +73,15 @@ class NavigationController(Node):
         dist_err, phi_err = self.get_pose_error()
 
         if dist_err > self.dist_precision:
-            P = self.kp_steering*dist_err
-            I = self.accumulated_error + self.ki_steering*dist_err*self.dt
-            D = self.kd_steering*(dist_err - self.last_error)/self.dt
+            P = self.kp_steering*phi_err
+            I = self.accumulated_error + self.ki_steering*phi_err*self.dt
+            D = self.kd_steering*(phi_err - self.last_error)/self.dt
 
-            throttle_control = P + I + D
-            throttle_control = max(0.01, min(0.3, throttle_control))
+            steering_control = P + I + D
+            steering_control = max(-1.9, min(1.9, steering_control))
 
-            # throttle_control = self.max_throttle - (self.kp_throttle * abs(phi_err))
-            # throttle_control = max(0.01, min(self.max_throttle, throttle_control))
-            steering_control = 0.0
+            throttle_control = self.max_throttle - (self.kp_throttle * abs(phi_err))
+            throttle_control = max(0.01, min(self.max_throttle, throttle_control))
 
             self.last_error = phi_err
             self.accumulated_error = I

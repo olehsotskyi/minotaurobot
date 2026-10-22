@@ -5,7 +5,6 @@ from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import IrIntensityVector
-from std_msgs.msg import Float32
 from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
 
@@ -17,9 +16,9 @@ class ControlNode(Node):
         super().__init__('control_node')
         self.desired_distance_right = 150  # Desired distance from the right wall in meters
         # Change this to match your vehicle
-        self.kp_steering = 0.00665
+        self.kp_steering = 0.00668
         self.ki_steering = 0.0
-        self.kd_steering = 0.0015
+        self.kd_steering = 0.0016
         self.kp_throttle = 0.0004
         self.max_throttle = 0.3
 
@@ -51,10 +50,10 @@ class ControlNode(Node):
 
     def ir_values(self, msg):
         self.ir_values = [r.value for r in msg.readings]
-        self.current_distance = (3*self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + 3*self.ir_values[3])/8
+        self.current_distance = (3*self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + 3*self.ir_values[3])/8
 
     def lidar_callback(self, msg):
-        self.get_logger().info(f'Obstacle: {msg.data}', throttle_duration_sec=1)
+        self.get_logger().info(f'Obstacle side: {msg.data}', throttle_duration_sec=1)
     
     def control_loop(self):
         # if self.current_distance == float('inf'):
@@ -91,7 +90,7 @@ class ControlNode(Node):
 
         msg.angular.x = 0.0
         msg.angular.y = 0.0
-        msg.angular.z = -1*steering_control
+        msg.angular.z = steering_control
 
         self.wheel_speed_publisher.publish(msg)
 

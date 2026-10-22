@@ -11,7 +11,6 @@ from geometry_msgs.msg import Twist
 from geometry_msgs.msg import Pose
 from nav_msgs.msg import Odometry
 from irobot_create_msgs.msg import IrIntensityVector
-from sensor_msgs.msg import LaserScan
 
 X = 2.0
 Y = 0.0
@@ -53,15 +52,6 @@ class ShmovingController(Node):
             'accumulated error' : 0.0
         }
 
-        self.wf_pid_1 = {
-            'kp linear' : 0.0004,
-            'kp angular' : 0.00665,
-            'ki angular' : 0.0,
-            'kd angular' : 0.0015,
-            'last error' : 0.0,
-            'accumulated error' : 0.0
-        }
-
         # go to goal PID parameters
         self.gtg_pid = {
             'kp linear' : 1.0,
@@ -73,7 +63,7 @@ class ShmovingController(Node):
         }
 
         # thresholds
-        self.wall_distance = 150.0
+        self.wall_distance = 250.0
         self.dist_precision = 0.1
         self.phi_precision = 0.1
         self.max_linear = 1.0
@@ -125,9 +115,9 @@ class ShmovingController(Node):
     
     def get_wall_error(self):
         if self.side == -1:
-            current_distance = (3*self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + 3*self.ir_values[3])/8
+            current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
         elif self.side == 1:
-            current_distance = (3*self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + 3*self.ir_values[3])/8
+            current_distance = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[3])/4
         return self.wall_distance - current_distance
     
     def check_goal(self):
@@ -149,20 +139,6 @@ class ShmovingController(Node):
 
         linear = self.max_linear - (pid_values['kp linear'] * abs(error))
         linear = max(self.min_linear, min(self.max_linear, linear))
-
-        return linear, angular, I
-
-    def pid_1(self, pid_values, error):
-        P = pid_values['kp angular'] * error
-        I = pid_values['accumulated error'] + pid_values['ki angular'] * error * self.dt
-        #I = max(self.min_angular, min(self.max_angular, I))
-        D = pid_values['kd angular'] * (error - pid_values['last error']) / self.dt
-
-        angular = P + I + D
-        angular = max(-1.9, min(1.9, angular))
-
-        linear = 0.3 - (pid_values['kp linear'] * abs(error))
-        linear = max(0.01, min(0.3, linear))
 
         return linear, angular, I
 
@@ -220,8 +196,8 @@ class ShmovingController(Node):
     def follow_wall(self):
         self.get_logger().info(f'Following wall', throttle_duration_sec=1)
         wall_err = self.get_wall_error()
-        self.linear, angular, self.wf_pid_1['accumulated error'] = self.pid_1(self.wf_pid_1, wall_err)
-        self.wf_pid_1['last error'] = wall_err
+        self.linear, angular, self.wf_pid['accumulated error'] = self.pid(self.wf_pid, wall_err)
+        self.wf_pid['last error'] = wall_err
 
         self.angular = self.side * angular
         self.send_wheel_commands()
@@ -247,7 +223,7 @@ class ShmovingController(Node):
         elif self.state == 'turn to goal':
             self.turn_to_goal()
             if self.check_orientation():
-                if self.obstacle == 'none':
+                if self.obstacle == 'none' or self.obstacle == 'far':
                     #reset PID last and accumulated errors when switching to go to goal state
                     self.reset_pid(self.gtg_pid)
                     self.state = 'go to goal'
@@ -263,7 +239,7 @@ class ShmovingController(Node):
             self.go_to_goal()
             if self.check_goal():
                 self.state = 'stop'
-            elif self.obstacle == 'none':
+            elif self.obstacle == 'none' or self.obstacle == 'far':
                 pass
             elif self.obstacle == 'right' or self.obstacle == 'left' or self.obstacle == 'front':
                 #reset PID last and accumulated errors when switching to wall follow state
@@ -275,7 +251,7 @@ class ShmovingController(Node):
             self.follow_wall()
             if self.check_goal():
                 self.state = 'stop'
-            elif self.obstacle == 'none':
+            elif self.obstacle == 'none' or self.obstacle == 'far':
                 #reset PID last and accumulated errors when switching to go to goal state
                 self.reset_pid(self.gtg_pid)
                 self.state = 'go to goal'
