@@ -184,13 +184,12 @@ class ShmovingController(Node):
         #current_distance = self.get_wall_distance()
         #self.get_logger().info(f'Current distance: {current_distance}')
         #self.get_logger().info(f'IR sensors: {self.ir_values}')
-        if self.side == -1: # wall right
-            if all(value > 110 for value in self.ir_values[3:5]) and all(value < 60 for value in self.ir_values[:3]) and all(value < 60 for value in self.ir_values[5:]):
-                low = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[5] + self.ir_values[6])/5
-                high = (self.ir_values[3] + self.ir_values[4])/2
-                return low < 50 and high > 300  
-        elif self.side == 1: # wall left
-            return self.ir_values[1] > 350
+        #What hapens when the robot approcahes the wall at the edge
+        if all(value > 110 for value in self.ir_values[3:5]) and all(value < 60 for value in self.ir_values[:3]) and all(value < 60 for value in self.ir_values[5:]):
+            low = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[5] + self.ir_values[6])/5
+            high = (self.ir_values[3] + self.ir_values[4])/2
+            return low < 50 and high > 300
+        return False
 
     def handle_side_obstacle(self):
         self.set_wall_side()
@@ -221,13 +220,13 @@ class ShmovingController(Node):
             dist_to_goal, _ = self.get_pose_error()
             self.min_dist_on_loop = min(self.min_dist_on_loop, float(dist_to_goal))
 
-        d = np.hypot(self.x - self.hit_point[0], self.y - self.hit_point[1])
+        d = np.hypot(self.x - self.hit_point[0], self.y - self.hit_point[1])  #calculates the straight-line distance between the robot and the hit point
         if not self.left_hit_point:
-            if d > self.leave_radius:
-                self.left_hit_point = True
+            if d > self.leave_radius:  #chcking if the distance is greater than the hit point radius
+                self.left_hit_point = True    #Setting the left hit point to true 
         elif d < self.hit_radius:
             # robot looped back to the hit point -> it is trapped
-            self.hit_point_count += 1
+            self.hit_point_count += 1   #Increment the hit point counter
             if self.hit_point_count == 1:
                 self.threshold = self.hit_distance   # trapped: only leave the wall once closer than the hit point
             else:
@@ -236,7 +235,7 @@ class ShmovingController(Node):
                 self.threshold = max(self.threshold, self.min_dist_on_loop + 2 * self.leave_margin)
             self.min_dist_on_loop = float('inf')   # start measuring the next lap
             self.left_hit_point = False
-            self.get_logger().info(f'TRAPPED: hit point revisited ({self.hit_point_count}x), threshold now {self.threshold:.2f} m')
+            self.get_logger().info(f'TRAPPED: hit point revisited ({self.hit_point_count}x), threshold now {self.threshold:.2f} m')   #Logger for if the hit point was revisted 
 
     def can_leave_wall(self):
         # normal behaviour until the robot has come back to the hit point
@@ -248,6 +247,7 @@ class ShmovingController(Node):
         return dist < self.threshold
 
     def clear_hit_point(self):
+        #Resets everything once the robot has made real progress toward the goal
         self.get_logger().info('Progress made past hit point, clearing hit point')
         self.hit_point = None
         self.hit_distance = None
@@ -381,6 +381,7 @@ class ShmovingController(Node):
         
         elif self.state == 'go to goal':
             self.go_to_goal()
+            #Check if we are revisiting the Hit point 
             self.check_hit_point_revisit()
             if self.hit_point is not None:
                 dist, _ = self.get_pose_error()
@@ -418,7 +419,7 @@ class ShmovingController(Node):
 
         elif self.state == 'maneuver':
             self.maneuver()
-            self.check_hit_point_revisit()
+            self.check_hit_point_revisit()  #Check if we revisited the hit point 
             if self.check_goal():
                 self.state = 'stop'
             elif abs(self.get_maneuver_error()) < 0.05:   # turn complete
