@@ -1,0 +1,5 @@
+  File "/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/shmoving_algorithm_1.py", line 37
+    'kp linear' = 0.0,
+    ^^^^^^^^^^^
+SyntaxError: cannot assign to literal here. Maybe you meant '==' instead of '='?
+

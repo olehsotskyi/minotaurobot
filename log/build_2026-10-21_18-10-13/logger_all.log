@@ -1,0 +1,140 @@
+[0.867s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.868s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffff95fa7560>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff96163b00>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff96163b00>>, mixin_verb=('build',))
+[1.050s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.050s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.050s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.050s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.051s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.051s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.051s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/robot/minotaurobot_oleh_ws'
+[1.052s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.052s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.052s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.053s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.053s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.053s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.053s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.053s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.053s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.171s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.171s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.171s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.172s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.173s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.173s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.174s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.174s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['ignore', 'ignore_ament_install']
+[1.175s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'ignore'
+[1.175s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'ignore_ament_install'
+[1.175s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['colcon_pkg']
+[1.175s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'colcon_pkg'
+[1.176s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['colcon_meta']
+[1.176s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'colcon_meta'
+[1.176s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['ros']
+[1.176s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'ros'
+[1.176s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['cmake', 'python']
+[1.177s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'cmake'
+[1.177s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'python'
+[1.177s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extensions ['python_setup_py']
+[1.177s] Level 1:colcon.colcon_core.package_identification:_identify(images) by extension 'python_setup_py'
+[1.178s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.178s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.178s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.183s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.183s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.184s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.184s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.184s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.187s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extensions ['ignore', 'ignore_ament_install']
+[1.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extension 'ignore'
+[1.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extension 'ignore_ament_install'
+[1.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extensions ['colcon_pkg']
+[1.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extension 'colcon_pkg'
+[1.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extensions ['colcon_meta']
+[1.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extension 'colcon_meta'
+[1.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extensions ['ros']
+[1.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/shmove_pkg) by extension 'ros'
+[1.198s] DEBUG:colcon.colcon_core.package_identification:Package 'src/shmove_pkg' with type 'ros.ament_python' and name 'shmove_pkg'
+[1.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.275s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.275s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.290s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/robot/minotaurobot_oleh_ws/install
+[1.294s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/robot/ros2_ws/install
+[1.298s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/robot/create3_examples_ws/install
+[1.314s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 297 installed packages in /opt/ros/jazzy
+[1.322s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.753s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'cmake_args' from command line to 'None'
+[1.754s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'cmake_target' from command line to 'None'
+[1.754s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.754s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[1.754s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[1.754s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[1.755s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[1.755s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[1.755s] Level 5:colcon.colcon_core.verb:set package 'shmove_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.755s] DEBUG:colcon.colcon_core.verb:Building package 'shmove_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg', 'merge_install': False, 'path': '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg', 'symlink_install': False, 'test_result_base': None}
+[1.756s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.761s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.762s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg' with build type 'ament_python'
+[1.763s] Level 1:colcon.colcon_core.shell:create_environment_hook('shmove_pkg', 'ament_prefix_path')
+[1.775s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.777s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/hook/ament_prefix_path.ps1'
+[1.781s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/hook/ament_prefix_path.dsv'
+[1.783s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/hook/ament_prefix_path.sh'
+[1.787s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.787s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.899s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg'
+[2.900s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.901s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.101s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg': PYTHONPATH=/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/shmove_pkg build --build-base /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build install --record /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/install.log --single-version-externally-managed install_data
+[9.107s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg' returned '0': PYTHONPATH=/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/shmove_pkg build --build-base /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build install --record /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/install.log --single-version-externally-managed install_data
+[9.119s] Level 1:colcon.colcon_core.environment:checking '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg' for CMake module files
+[9.122s] Level 1:colcon.colcon_core.environment:checking '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg' for CMake config files
+[9.127s] Level 1:colcon.colcon_core.environment:checking '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib'
+[9.128s] Level 1:colcon.colcon_core.environment:checking '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/bin'
+[9.128s] Level 1:colcon.colcon_core.environment:checking '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/pkgconfig/shmove_pkg.pc'
+[9.129s] Level 1:colcon.colcon_core.environment:checking '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages'
+[9.130s] Level 1:colcon.colcon_core.shell:create_environment_hook('shmove_pkg', 'pythonpath')
+[9.131s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/hook/pythonpath.ps1'
+[9.133s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/hook/pythonpath.dsv'
+[9.135s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/hook/pythonpath.sh'
+[9.139s] Level 1:colcon.colcon_core.environment:checking '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/bin'
+[9.140s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(shmove_pkg)
+[9.141s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/package.ps1'
+[9.145s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/package.dsv'
+[9.148s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/package.sh'
+[9.152s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/package.bash'
+[9.155s] INFO:colcon.colcon_core.shell:Creating package script '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg/package.zsh'
+[9.158s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/colcon-core/packages/shmove_pkg)
+[9.159s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[9.160s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[9.161s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[9.162s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[9.163s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[9.164s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/minotaurobot_oleh_ws/install/local_setup.ps1'
+[9.168s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot/minotaurobot_oleh_ws/install/_local_setup_util_ps1.py'
+[9.174s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/minotaurobot_oleh_ws/install/setup.ps1'
+[9.183s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/minotaurobot_oleh_ws/install/local_setup.sh'
+[9.187s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/robot/minotaurobot_oleh_ws/install/_local_setup_util_sh.py'
+[9.190s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/minotaurobot_oleh_ws/install/setup.sh'
+[9.196s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/minotaurobot_oleh_ws/install/local_setup.bash'
+[9.199s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/minotaurobot_oleh_ws/install/setup.bash'
+[9.207s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/robot/minotaurobot_oleh_ws/install/local_setup.zsh'
+[9.210s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/robot/minotaurobot_oleh_ws/install/setup.zsh'

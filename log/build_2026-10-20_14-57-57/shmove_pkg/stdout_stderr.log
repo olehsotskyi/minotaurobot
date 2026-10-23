@@ -1,0 +1,20 @@
+running develop
+running egg_info
+creating shmove_pkg.egg-info
+writing shmove_pkg.egg-info/PKG-INFO
+writing dependency_links to shmove_pkg.egg-info/dependency_links.txt
+writing requirements to shmove_pkg.egg-info/requires.txt
+writing top-level names to shmove_pkg.egg-info/top_level.txt
+writing manifest file 'shmove_pkg.egg-info/SOURCES.txt'
+reading manifest file 'shmove_pkg.egg-info/SOURCES.txt'
+writing manifest file 'shmove_pkg.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove-pkg.egg-link (link to .)
+
+Installed /home/robot/minotaurobot_oleh_ws/build/shmove_pkg
+running symlink_data
+creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index
+creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index/resource_index
+creating /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index/resource_index/packages
+symbolically linking /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/resource/shmove_pkg -> /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/ament_index/resource_index/packages
+symbolically linking /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/package.xml -> /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/share/shmove_pkg

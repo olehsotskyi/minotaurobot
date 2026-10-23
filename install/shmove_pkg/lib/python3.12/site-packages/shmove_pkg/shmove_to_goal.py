@@ -10,8 +10,11 @@ from irobot_create_msgs.msg import IrIntensityVector
 from std_msgs.msg import Float32
 from sensor_msgs.msg import LaserScan
 
-X = -1.66
-Y = 0.98
+# X = 1.07
+# Y = 0.0
+
+X = 0.0
+Y = 1.07
 
 class NavigationController(Node):
     def __init__(self, x_goal=X, y_goal=Y):
@@ -23,14 +26,14 @@ class NavigationController(Node):
 
         self.x_desired = x_goal
         self.y_desired = y_goal
-        self.dist_precision = 0.1
+        self.dist_precision = 0.01
 
-        self.kp_steering = 10.0
-        self.ki_steering = 0.1
-        self.kd_steering = 0.1
+        self.kp_steering = 1.5
+        self.ki_steering = 0.0
+        self.kd_steering = 0.15
 
         self.kp_throttle = 1.0
-        self.max_throttle = 1.0
+        self.max_throttle = 0.15
 
         self.dt = 0.01
         self.last_error = 0.0
@@ -75,7 +78,7 @@ class NavigationController(Node):
             D = self.kd_steering*(phi_err - self.last_error)/self.dt
 
             steering_control = P + I + D
-            steering_control = max(-2.0, min(2.0, steering_control))
+            steering_control = max(-1.9, min(1.9, steering_control))
 
             throttle_control = self.max_throttle - (self.kp_throttle * abs(phi_err))
             throttle_control = max(0.01, min(self.max_throttle, throttle_control))

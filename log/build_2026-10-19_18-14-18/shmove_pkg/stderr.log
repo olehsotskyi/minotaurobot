@@ -1,0 +1,5 @@
+  File "/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/shmoving_algorithm_1.py", line 152
+    def send_wheel_commands(self)
+                                 ^
+SyntaxError: expected ':'
+

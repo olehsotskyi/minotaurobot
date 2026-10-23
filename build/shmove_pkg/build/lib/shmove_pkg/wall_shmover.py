@@ -5,19 +5,22 @@ from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from geometry_msgs.msg import Twist
 from irobot_create_msgs.msg import IrIntensityVector
-from std_msgs.msg import Float32
+from std_msgs.msg import String
 from sensor_msgs.msg import LaserScan
+
+# class PID:
+#     def __init__(self, kp)
 
 class ControlNode(Node):
     def __init__(self):
         super().__init__('control_node')
-        self.desired_distance_right = 250  # Desired distance from the right wall in meters
+        self.desired_distance_right = 150  # Desired distance from the right wall in meters
         # Change this to match your vehicle
-        self.kp_steering = 0.011
-        self.ki_steering = 0.00015
-        self.kd_steering = 0.0001
-        self.kp_throttle = 0.002
-        self.max_throttle = 1.0
+        self.kp_steering = 0.00668
+        self.ki_steering = 0.0
+        self.kd_steering = 0.0016
+        self.kp_throttle = 0.0004
+        self.max_throttle = 0.3
 
         self.last_error = 0.0
         self.integral = 0.0
@@ -38,31 +41,33 @@ class ControlNode(Node):
         #     self.lidar_callback,
         #     qos_profile_sensor_data)
 
-        self.current_distance = 260
+        self.lidar_subscriber = self.create_subscription(String, '/robot_7/obstacle', self.lidar_callback, qos_profile_sensor_data)
+
+        self.current_distance = 160
         #self.current_distance = float('inf')
 
         self.get_logger().info('Control Node has been started.')
 
     def ir_values(self, msg):
         self.ir_values = [r.value for r in msg.readings]
-        self.current_distance = (self.ir_values[6] + self.ir_values[5] + self.ir_values[4] + self.ir_values[3])/4
+        self.current_distance = (3*self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + 3*self.ir_values[3])/8
 
-    # def lidar_callback(self, msg):
-    #     self.current_distance = msg.data
+    def lidar_callback(self, msg):
+        self.get_logger().info(f'Obstacle side: {msg.data}', throttle_duration_sec=1)
     
     def control_loop(self):
         # if self.current_distance == float('inf'):
         #     return
 
         error = self.desired_distance_right - self.current_distance
-        print(error)
+        #print(error)
         self.integral += error * 0.01
         derivative = (error - self.last_error) / 0.01
         self.last_error = error
 
         # Steering control
         steering_control = self.kp_steering * error + self.ki_steering * self.integral + self.kd_steering * derivative
-        steering_control = max(-1.0, min(2.0, steering_control))
+        steering_control = max(-1.9, min(1.9, steering_control))
 
         # steering_msg = Float32()
         # steering_msg.data = steering_control
@@ -85,7 +90,7 @@ class ControlNode(Node):
 
         msg.angular.x = 0.0
         msg.angular.y = 0.0
-        msg.angular.z = -1*steering_control
+        msg.angular.z = steering_control
 
         self.wheel_speed_publisher.publish(msg)
 
