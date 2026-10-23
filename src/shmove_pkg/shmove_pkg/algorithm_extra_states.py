@@ -177,7 +177,7 @@ class ShmovingController(Node):
             if all(value > 150 for value in self.ir_values[3:5]) and all(value < 60 for value in self.ir_values[:3]) and all(value < 60 for value in self.ir_values[5:]):
                 low = (self.ir_values[0] + self.ir_values[1] + self.ir_values[2] + self.ir_values[5] + self.ir_values[6])/5
                 high = (self.ir_values[3] + self.ir_values[4])/2
-                return low < 40 and high > 300  
+                return low < 50 and high > 300  
         elif self.side == 1: # wall left
             return self.ir_values[1] > 350
     

@@ -1,3 +1,4 @@
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/algorithm_final.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/go_to_goal.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/mover.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/ir_sensors.py
@@ -11,6 +12,7 @@
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/algorithm_extra_states.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/starting_pose.py
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/algorithm_classes.py
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/algorithm_final.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/go_to_goal.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/mover.cpython-312.pyc
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/__pycache__/ir_sensors.cpython-312.pyc
@@ -35,6 +37,7 @@
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info/requires.txt
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/algorithm_classes
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/algorithm_extra_states
+/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/algorithm_final
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/algorithm_no_classes
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/go_to_goal
 /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg/ir_sensors

@@ -32,6 +32,7 @@ setup(
             'algorithm_no_classes = shmove_pkg.algorithm_no_classes:main',
             'algorithm_classes = shmove_pkg.algorithm_classes:main',
             'algorithm_extra_states = shmove_pkg.algorithm_extra_states:main',
+            'algorithm_final = shmove_pkg.algorithm_final:main',
             'wall_shmover = shmove_pkg.wall_shmover:main',
             'starting_pose = shmove_pkg.starting_pose:main',
             'test = shmove_pkg.test:main',
