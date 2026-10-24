@@ -1,0 +1,5 @@
+  File "/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/code.py", line 33
+    def main();
+              ^
+SyntaxError: expected ':'
+

@@ -1,5 +1,15 @@
 # minotaurobot
 This is a repository of Group 7 for the Introduction Project course of MSc Smart Systems Engineering at Hanze University of Applied Sciences.
+## Navigating the repository
+None of use had much actual experience using GitHub, so our repository is a mess (sorry for this).
+
+The code used during the demonstration is [algorithm_final.py](src/shmove_pkg/shmove_pkg/algorithm_final.py) for running the algorithm to solve the maze, and [Laser_v2.py](https://github.com/olehsotskyi/minotaurobot/blob/fe25a2dca72394fc021bd802089c55455ffe43d2/src/lidar_reader/lidar_reader/Laser_v2.py) for detecting obstacles with Lidar.
+
+Code written by **Oleh Sotskyi** can be found on **branch "oleh"** and was merged into "main" branch.
+
+Code written by **Herman Buma Afeseh-Bidnyugha** can be found on **branch "hermann"** and was not yet merged into "main" branch.
+
+Code written by **Herman Buma Afeseh-Bidnyugha and Sami Akash-Mohamed** can be found on branch **"feature/lidar-sami"** and was not yet merged into "main" branch.
 ## Introduction Project course
 ### General Information
 In this course groups of students are expected to design and implement software and/or hardware to complete a maze using the provided [iRobot Create 3 Educational Robot](https://iroboteducation.github.io/create3_docs/). During the course the students have a maze available that can be reconfigured. At the end of the project the students get to demonstrate their work in a maze novel to the students and the robot. 
