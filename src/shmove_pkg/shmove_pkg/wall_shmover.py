@@ -1,5 +1,3 @@
-# ~/ros2_workspace/src/wall_following_pkg/wall_following_pkg/control_node.py
-
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
