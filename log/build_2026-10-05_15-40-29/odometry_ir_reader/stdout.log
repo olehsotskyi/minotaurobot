@@ -1,0 +1,21 @@
+running egg_info
+writing ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/PKG-INFO
+writing dependency_links to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/dependency_links.txt
+writing entry points to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/entry_points.txt
+writing requirements to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/requires.txt
+writing top-level names to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/top_level.txt
+reading manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'
+writing manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+byte-compiling /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader/bumper_sensor_reader.py to bumper_sensor_reader.cpython-312.pyc
+running install_data
+running install_egg_info
+removing '/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../../build/odometry_ir_reader/odometry_ir_reader.egg-info to /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info
+running install_scripts
+Installing bumper_sensor_reader script to /home/robot/hermann_ws/install/odometry_ir_reader/lib/odometry_ir_reader
+Installing odometry_ir_subscriber script to /home/robot/hermann_ws/install/odometry_ir_reader/lib/odometry_ir_reader
+writing list of installed files to '/home/robot/hermann_ws/build/odometry_ir_reader/install.log'

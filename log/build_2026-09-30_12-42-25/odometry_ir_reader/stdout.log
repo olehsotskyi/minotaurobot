@@ -1,0 +1,23 @@
+running egg_info
+creating ../../build/odometry_ir_reader/odometry_ir_reader.egg-info
+writing ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/PKG-INFO
+writing dependency_links to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/dependency_links.txt
+writing entry points to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/entry_points.txt
+writing requirements to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/requires.txt
+writing top-level names to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/top_level.txt
+writing manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'
+reading manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'
+writing manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'
+running build
+running install
+running install_data
+creating /home/robot/hermann_ws/install/odometry_ir_reader/share/ament_index
+creating /home/robot/hermann_ws/install/odometry_ir_reader/share/ament_index/resource_index
+creating /home/robot/hermann_ws/install/odometry_ir_reader/share/ament_index/resource_index/packages
+copying resource/odometry_ir_reader -> /home/robot/hermann_ws/install/odometry_ir_reader/share/ament_index/resource_index/packages
+copying package.xml -> /home/robot/hermann_ws/install/odometry_ir_reader/share/odometry_ir_reader
+running install_egg_info
+Copying ../../build/odometry_ir_reader/odometry_ir_reader.egg-info to /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info
+running install_scripts
+Installing odometry_ir_subscriber script to /home/robot/hermann_ws/install/odometry_ir_reader/lib/odometry_ir_reader
+writing list of installed files to '/home/robot/hermann_ws/build/odometry_ir_reader/install.log'

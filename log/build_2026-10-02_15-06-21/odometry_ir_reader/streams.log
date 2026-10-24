@@ -1,0 +1,21 @@
+[5.558s] Invoking command in '/home/robot/hermann_ws/src/odometry_ir_reader': PYTHONPATH=/home/robot/hermann_ws/build/odometry_ir_reader/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/odometry_ir_reader build --build-base /home/robot/hermann_ws/build/odometry_ir_reader/build install --record /home/robot/hermann_ws/build/odometry_ir_reader/install.log --single-version-externally-managed install_data
+[7.084s] running egg_info
+[7.192s] writing ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/PKG-INFO
+[7.193s] writing dependency_links to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/dependency_links.txt
+[7.197s] writing entry points to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/entry_points.txt
+[7.198s] writing requirements to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/requires.txt
+[7.199s] writing top-level names to ../../build/odometry_ir_reader/odometry_ir_reader.egg-info/top_level.txt
+[7.474s] reading manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'
+[7.480s] writing manifest file '../../build/odometry_ir_reader/odometry_ir_reader.egg-info/SOURCES.txt'
+[7.494s] running build
+[7.495s] running build_py
+[7.497s] running install
+[7.534s] running install_lib
+[7.665s] running install_data
+[7.666s] running install_egg_info
+[7.792s] removing '/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info' (and everything under it)
+[7.795s] Copying ../../build/odometry_ir_reader/odometry_ir_reader.egg-info to /home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages/odometry_ir_reader-0.0.0-py3.12.egg-info
+[7.807s] running install_scripts
+[8.731s] Installing odometry_ir_subscriber script to /home/robot/hermann_ws/install/odometry_ir_reader/lib/odometry_ir_reader
+[8.736s] writing list of installed files to '/home/robot/hermann_ws/build/odometry_ir_reader/install.log'
+[8.907s] Invoked command in '/home/robot/hermann_ws/src/odometry_ir_reader' returned '0': PYTHONPATH=/home/robot/hermann_ws/build/odometry_ir_reader/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/hermann_ws/install/odometry_ir_reader/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/odometry_ir_reader build --build-base /home/robot/hermann_ws/build/odometry_ir_reader/build install --record /home/robot/hermann_ws/build/odometry_ir_reader/install.log --single-version-externally-managed install_data
