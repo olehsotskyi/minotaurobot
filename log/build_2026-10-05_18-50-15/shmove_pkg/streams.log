@@ -1,0 +1,29 @@
+[3.834s] Invoking command in '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg': PYTHONPATH=/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/shmove_pkg build --build-base /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build install --record /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/install.log --single-version-externally-managed install_data
+[5.066s] running egg_info
+[5.156s] writing ../../build/shmove_pkg/shmove_pkg.egg-info/PKG-INFO
+[5.158s] writing dependency_links to ../../build/shmove_pkg/shmove_pkg.egg-info/dependency_links.txt
+[5.159s] writing entry points to ../../build/shmove_pkg/shmove_pkg.egg-info/entry_points.txt
+[5.160s] writing requirements to ../../build/shmove_pkg/shmove_pkg.egg-info/requires.txt
+[5.161s] writing top-level names to ../../build/shmove_pkg/shmove_pkg.egg-info/top_level.txt
+[5.348s] reading manifest file '../../build/shmove_pkg/shmove_pkg.egg-info/SOURCES.txt'
+[5.352s] writing manifest file '../../build/shmove_pkg/shmove_pkg.egg-info/SOURCES.txt'
+[5.353s] running build
+[5.353s] running build_py
+[5.354s] copying shmove_pkg/test.py -> /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build/lib/shmove_pkg
+[5.357s] running install
+[5.381s] running install_lib
+[5.471s] copying /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build/lib/shmove_pkg/test.py -> /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg
+[5.475s] byte-compiling /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/test.py to test.cpython-312.pyc
+[5.480s] running install_data
+[5.480s] running install_egg_info
+[5.575s] removing '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info' (and everything under it)
+[5.577s] Copying ../../build/shmove_pkg/shmove_pkg.egg-info to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info
+[5.585s] running install_scripts
+[6.270s] Installing go_to_goal script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg
+[6.271s] Installing shmover script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg
+[6.272s] Installing shmoving_algorithm_1 script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg
+[6.273s] Installing test script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg
+[6.296s] Installing wall_follower script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg
+[6.298s] Installing wall_shmover script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg
+[6.302s] writing list of installed files to '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/install.log'
+[6.441s] Invoked command in '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg' returned '0': PYTHONPATH=/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/shmove_pkg build --build-base /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build install --record /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/install.log --single-version-externally-managed install_data

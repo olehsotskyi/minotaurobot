@@ -1,0 +1,100 @@
+[0.000000] (-) TimerEvent: {}
+[0.000994] (shmove_pkg) JobQueued: {'identifier': 'shmove_pkg', 'dependencies': OrderedDict()}
+[0.001786] (shmove_pkg) JobStarted: {'identifier': 'shmove_pkg'}
+[0.099218] (-) TimerEvent: {}
+[0.199829] (-) TimerEvent: {}
+[0.300516] (-) TimerEvent: {}
+[0.401219] (-) TimerEvent: {}
+[0.501798] (-) TimerEvent: {}
+[0.602439] (-) TimerEvent: {}
+[0.703062] (-) TimerEvent: {}
+[0.803623] (-) TimerEvent: {}
+[0.904295] (-) TimerEvent: {}
+[1.005012] (-) TimerEvent: {}
+[1.105846] (-) TimerEvent: {}
+[1.206681] (-) TimerEvent: {}
+[1.307616] (-) TimerEvent: {}
+[1.408276] (-) TimerEvent: {}
+[1.508859] (-) TimerEvent: {}
+[1.609452] (-) TimerEvent: {}
+[1.710023] (-) TimerEvent: {}
+[1.810583] (-) TimerEvent: {}
+[1.911187] (-) TimerEvent: {}
+[2.011753] (-) TimerEvent: {}
+[2.112376] (-) TimerEvent: {}
+[2.212972] (-) TimerEvent: {}
+[2.313545] (-) TimerEvent: {}
+[2.414146] (-) TimerEvent: {}
+[2.514711] (-) TimerEvent: {}
+[2.615284] (-) TimerEvent: {}
+[2.715940] (-) TimerEvent: {}
+[2.816523] (-) TimerEvent: {}
+[2.917116] (-) TimerEvent: {}
+[3.017689] (-) TimerEvent: {}
+[3.118309] (-) TimerEvent: {}
+[3.218862] (-) TimerEvent: {}
+[3.319474] (-) TimerEvent: {}
+[3.420052] (-) TimerEvent: {}
+[3.520688] (-) TimerEvent: {}
+[3.621347] (-) TimerEvent: {}
+[3.722008] (-) TimerEvent: {}
+[3.822931] (-) TimerEvent: {}
+[3.876150] (shmove_pkg) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/shmove_pkg', 'build', '--build-base', '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build', 'install', '--record', '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/robot/minotaurobot_oleh_ws/src/shmove_pkg', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'robot', 'SSH_CLIENT': '10.149.24.24 55681 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/robot/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/robot/create3_examples_ws/install/create3_coverage/lib:/home/robot/create3_examples_ws/install/create3_examples_msgs/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/home/robot/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/helpers/browser.sh', 'HOME': '/home/robot', 'OLDPWD': '/home/robot', 'TERM_PROGRAM_VERSION': '1.140.0', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-ec2de131-77f4-4bf9-9d53-2cc466dcb325.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/robot/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/robot/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/home/robot/minotaurobot_oleh_ws/install:/home/robot/ros2_ws/install:/home/robot/create3_examples_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'robot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '31', 'PATH': '/home/robot/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/robot/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/robot/.vscode-server/cli/servers/Stable-07f806f999227108933c2e30515b26eecc1fda74/server/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-cd1120867c.sock', 'TERM_PROGRAM': 'vscode', 'ROS_DOMAIN_ID': '7', 'AMENT_PREFIX_PATH': '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg:/home/robot/ros2_ws/install/scan_logger:/home/robot/create3_examples_ws/install/create3_teleop:/home/robot/create3_examples_ws/install/create3_republisher:/home/robot/create3_examples_ws/install/create3_lidar_slam:/home/robot/create3_examples_ws/install/create3_examples_py:/home/robot/create3_examples_ws/install/create3_coverage:/home/robot/create3_examples_ws/install/create3_examples_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': 'dca80b92d02a1269c5a5431c52be444b', 'SSH_CONNECTION': '10.149.24.24 55681 10.149.24.15 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages:/home/robot/ros2_ws/install/scan_logger/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_teleop/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_examples_py/lib/python3.12/site-packages:/home/robot/create3_examples_ws/install/create3_examples_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/robot/create3_examples_ws/install/create3_republisher:/home/robot/create3_examples_ws/install/create3_lidar_slam:/home/robot/create3_examples_ws/install/create3_coverage:/home/robot/create3_examples_ws/install/create3_examples_msgs:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[3.923098] (-) TimerEvent: {}
+[4.024533] (-) TimerEvent: {}
+[4.125184] (-) TimerEvent: {}
+[4.225744] (-) TimerEvent: {}
+[4.326405] (-) TimerEvent: {}
+[4.427335] (-) TimerEvent: {}
+[4.527966] (-) TimerEvent: {}
+[4.628563] (-) TimerEvent: {}
+[4.729167] (-) TimerEvent: {}
+[4.829740] (-) TimerEvent: {}
+[4.930357] (-) TimerEvent: {}
+[5.030950] (-) TimerEvent: {}
+[5.131505] (-) TimerEvent: {}
+[5.142107] (shmove_pkg) StdoutLine: {'line': b'running egg_info\n'}
+[5.231671] (-) TimerEvent: {}
+[5.234946] (shmove_pkg) StdoutLine: {'line': b'writing ../../build/shmove_pkg/shmove_pkg.egg-info/PKG-INFO\n'}
+[5.236179] (shmove_pkg) StdoutLine: {'line': b'writing dependency_links to ../../build/shmove_pkg/shmove_pkg.egg-info/dependency_links.txt\n'}
+[5.237571] (shmove_pkg) StdoutLine: {'line': b'writing entry points to ../../build/shmove_pkg/shmove_pkg.egg-info/entry_points.txt\n'}
+[5.238564] (shmove_pkg) StdoutLine: {'line': b'writing requirements to ../../build/shmove_pkg/shmove_pkg.egg-info/requires.txt\n'}
+[5.239402] (shmove_pkg) StdoutLine: {'line': b'writing top-level names to ../../build/shmove_pkg/shmove_pkg.egg-info/top_level.txt\n'}
+[5.331839] (-) TimerEvent: {}
+[5.428426] (shmove_pkg) StdoutLine: {'line': b"reading manifest file '../../build/shmove_pkg/shmove_pkg.egg-info/SOURCES.txt'\n"}
+[5.431980] (-) TimerEvent: {}
+[5.432613] (shmove_pkg) StdoutLine: {'line': b"writing manifest file '../../build/shmove_pkg/shmove_pkg.egg-info/SOURCES.txt'\n"}
+[5.433393] (shmove_pkg) StdoutLine: {'line': b'running build\n'}
+[5.434024] (shmove_pkg) StdoutLine: {'line': b'running build_py\n'}
+[5.434734] (shmove_pkg) StdoutLine: {'line': b'copying shmove_pkg/mover.py -> /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build/lib/shmove_pkg\n'}
+[5.437555] (shmove_pkg) StdoutLine: {'line': b'running install\n'}
+[5.462944] (shmove_pkg) StdoutLine: {'line': b'running install_lib\n'}
+[5.532135] (-) TimerEvent: {}
+[5.557686] (shmove_pkg) StdoutLine: {'line': b'copying /home/robot/minotaurobot_oleh_ws/build/shmove_pkg/build/lib/shmove_pkg/mover.py -> /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg\n'}
+[5.562501] (shmove_pkg) StdoutLine: {'line': b'byte-compiling /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg/mover.py to mover.cpython-312.pyc\n'}
+[5.566280] (shmove_pkg) StdoutLine: {'line': b'running install_data\n'}
+[5.567004] (shmove_pkg) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.632286] (-) TimerEvent: {}
+[5.666466] (shmove_pkg) StdoutLine: {'line': b"removing '/home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info' (and everything under it)\n"}
+[5.668719] (shmove_pkg) StdoutLine: {'line': b'Copying ../../build/shmove_pkg/shmove_pkg.egg-info to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/python3.12/site-packages/shmove_pkg-0.0.0-py3.12.egg-info\n'}
+[5.677779] (shmove_pkg) StdoutLine: {'line': b'running install_scripts\n'}
+[5.732471] (-) TimerEvent: {}
+[5.833177] (-) TimerEvent: {}
+[5.933725] (-) TimerEvent: {}
+[6.034330] (-) TimerEvent: {}
+[6.134944] (-) TimerEvent: {}
+[6.235535] (-) TimerEvent: {}
+[6.336142] (-) TimerEvent: {}
+[6.374845] (shmove_pkg) StdoutLine: {'line': b'Installing go_to_goal script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg\n'}
+[6.375801] (shmove_pkg) StdoutLine: {'line': b'Installing mover script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg\n'}
+[6.376977] (shmove_pkg) StdoutLine: {'line': b'Installing shmoving_algorithm_1 script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg\n'}
+[6.377932] (shmove_pkg) StdoutLine: {'line': b'Installing test script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg\n'}
+[6.378818] (shmove_pkg) StdoutLine: {'line': b'Installing test2 script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg\n'}
+[6.379810] (shmove_pkg) StdoutLine: {'line': b'Installing wall_follower script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg\n'}
+[6.380910] (shmove_pkg) StdoutLine: {'line': b'Installing wall_shmover script to /home/robot/minotaurobot_oleh_ws/install/shmove_pkg/lib/shmove_pkg\n'}
+[6.382863] (shmove_pkg) StdoutLine: {'line': b"writing list of installed files to '/home/robot/minotaurobot_oleh_ws/build/shmove_pkg/install.log'\n"}
+[6.436366] (-) TimerEvent: {}
+[6.522763] (shmove_pkg) CommandEnded: {'returncode': 0}
+[6.536508] (-) TimerEvent: {}
+[6.573459] (shmove_pkg) JobEnded: {'identifier': 'shmove_pkg', 'rc': 0}
+[6.576483] (-) EventReactorShutdown: {}
